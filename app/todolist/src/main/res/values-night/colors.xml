@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green_bg">#FF00BCD4</color>
+    <color name="purple_bg">#FFA272E6</color>
+    <color name="blue_bg">#FF458ABF</color>
+    <color name="blue_fg">#FF021953</color>
+    <color name="light_bg">#325955</color>
+    <color name="black_fg">#FFEEEEEE</color>
+    <color name="white_fg">#FF444444</color>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Widgets</string>
+    <string name="switchCaption">Kép Csere</string>
+    <string name="snackCaption">Mutass egy SnackBar-t!</string>
+    <string name="exitCaption">Kilépés</string>
+</resources>

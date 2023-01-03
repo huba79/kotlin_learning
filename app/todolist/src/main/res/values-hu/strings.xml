@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bevásárlólista</string>
+    <string name="add_item">Hozzáad</string>
+    <string name="confirm_delete_question">Biztosan törölni szeretnéd ezt a tételt?</string>
+    <string name="caption_yes">Persze</string>
+    <string name="caption_nope">Nem hiszem</string>
+    <string name="confirm_delete_title">Biztos törölnéd?</string>
+    <string name="shopping_item_hint">Mit szeretne vásárolni?</string>
+    <string name="infoMessage">Hosszan nyomj rá egy elemre hogy törölhesd a listádból!</string>
+</resources>

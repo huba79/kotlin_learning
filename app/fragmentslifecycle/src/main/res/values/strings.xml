@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">FragmentsLifecycle</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="wellcome_fragment1">Fragment1\'s content</string>
+    <string name="wellcome_fragment2">Fragment2\'s content</string>
+</resources>

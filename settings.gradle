@@ -1,0 +1,27 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Widgets"
+include ':app'
+include ':app:recyclerview'
+include ':app:gridview'
+include ':app:mylibrary'
+include ':app:fragmentslifecycle'
+include ':app:services'
+include ':app:viewbinding'
+include ':app:sharedpreferences'
+include ':app:densities_failed'
+include ':app:pixeldensities'
+include ':app:screensizes'
+include ':app:todolist'

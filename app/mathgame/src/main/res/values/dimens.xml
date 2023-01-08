@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="menu_padding">50dp</dimen>
+    <dimen name="menu_button_margin">20dp</dimen>
+    <dimen name="margin_default">3dp</dimen>
+    <dimen name="margin_element_spacing">10dp</dimen>
+    <dimen name="margin_text_spacing">20dp</dimen>
+</resources>

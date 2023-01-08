@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MathGame</string>
+    <string name="menu_addition">Addition game</string>
+    <string name="menu_multiplication">Multiplication game</string>
+    <string name="menu_exit">Exit</string>
+
+    <string name="label_life">Lives:</string>
+    <string name="label_score">Score:</string>
+    <string name="label_timer">Seconds left:</string>
+
+    <string name="button_next">Next</string>
+    <string name="button_check">Check</string>
+    <string name="button_exit">Exit</string>
+    <string name="button_replay">Start another game</string>
+    <string name="button_close">Close the application</string>
+
+    <string name ="result_hint">Type your result here!</string>
+
+    <string name ="message_missing_result">Please enter your answer!</string>
+    <string name ="message_congratulations_title">Congratulations!!!</string>
+    <string name ="message_congratulations_subtitle">Your score is:</string>
+
+    <string name ="invalid_operator_exception">Invalid Operator Provided!</string>
+</resources>

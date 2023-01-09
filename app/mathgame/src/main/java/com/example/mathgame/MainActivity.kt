@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mathgame.databinding.ActivityMainBinding
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
     private lateinit var activityMainBinding: ActivityMainBinding
@@ -26,8 +27,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("game",GamesEnum.MULTIPLICATION.name)
             startActivity(intent)
         }
-        activityMainBinding.exitButton.setOnClickListener{
-            finish()
-        }
+        activityMainBinding.exitButton.setOnClickListener { exitProcess(0) }
     }
 }

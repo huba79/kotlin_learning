@@ -27,6 +27,15 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("game",GamesEnum.MULTIPLICATION.name)
             startActivity(intent)
         }
-        activityMainBinding.exitButton.setOnClickListener { exitProcess(0) }
+        activityMainBinding.exitButton.setOnClickListener { this.finishAffinity() }
     }
+
+    fun startTimer(){
+
+    }
+
+    fun stopTimer(){
+
+    }
+
 }

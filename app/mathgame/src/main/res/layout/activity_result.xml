@@ -34,8 +34,8 @@
 
     <TextView
         android:id="@+id/congratsSubtitleView"
-        android:layout_width="311dp"
-        android:layout_height="100dp"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/message_congratulations_subtitle"
         android:textSize="24sp"
@@ -48,7 +48,7 @@
     <TextView
         android:id="@+id/congratsTitleView"
         android:layout_width="311dp"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/message_congratulations_title"
         android:textColor="#FF5722"

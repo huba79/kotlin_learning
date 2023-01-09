@@ -3,6 +3,7 @@ package com.example.mathgame
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.mathgame.databinding.ActivityResultBinding
 import kotlin.system.exitProcess
 
@@ -16,14 +17,20 @@ class ResultActivity : AppCompatActivity() {
 
         //val game = intent.getSerializableExtra("game", Game::class.java) as Game as from API 33
         @Suppress("DEPRECATION")
-        val game = intent.getSerializableExtra("game") as Game
-        binding.finalScoreView.text = game.currentScore.toString()
+        val game = intent.getSerializableExtra("game") as? Game
+        binding.finalScoreView.text =
+            if (game == null) "0" else game?.currentScore.toString();
 
-        binding.closeButton.setOnClickListener { exitProcess(0) }
+        binding.closeButton.setOnClickListener { this.finishAffinity() }
 
         binding.replayButton.setOnClickListener{
             val intent = Intent(this@ResultActivity, MainActivity::class.java)
-            startActivity(/* intent = */ intent)
+            startActivity(intent)
         }
+    }
+    override fun onBackPressed() {
+        Toast
+            .makeText(this@ResultActivity,"Use the exit button to leave the application!", Toast.LENGTH_SHORT)
+            .show()
     }
 }

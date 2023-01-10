@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg3"
+    android:background="@mipmap/bg1"
     tools:context=".GameActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
@@ -17,7 +17,7 @@
         android:layout_marginEnd="5dp"
         android:baselineAligned="false"
         android:orientation="horizontal"
-        android:padding="3dp"
+        android:paddingHorizontal="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,10 +26,11 @@
             android:id="@+id/lifeLayout"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:layout_weight="3"
             android:gravity="start|center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="3dp">
 
             <TextView
                 android:id="@+id/lifeLabel"
@@ -37,27 +38,33 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:text="@string/label_life"
-                android:textColor="@color/solid_green"
+                android:textColor="@color/deep_blue"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/lifeView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start|center_vertical"
-                android:text=""
-                android:textColor="@color/solid_green"
-                android:textStyle="bold" />
+                android:layout_gravity="center_vertical|end"
+                android:layout_margin="5dp"
+                android:paddingHorizontal="5dp"
+                android:text="@string/empty_two_digits"
+                android:textColor="@color/deep_blue"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/scoreLayout"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:gravity="start|center_vertical"
-            android:orientation="horizontal">
+            android:layout_margin="8dp"
+            android:layout_weight="5"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            android:padding="3dp">
 
             <TextView
                 android:id="@+id/scoreLabel"
@@ -65,27 +72,33 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:text="@string/label_score"
-                android:textColor="@color/solid_green"
+                android:textColor="@color/deep_blue"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/scoreView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start|center_vertical"
-                android:text=""
-                android:textColor="@color/solid_green"
-                android:textStyle="bold" />
+                android:layout_gravity="center_vertical|end"
+                android:layout_margin="5dp"
+                android:paddingHorizontal="5dp"
+                android:text="@string/empty_two_digits"
+                android:textColor="@color/deep_blue"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/timerLayout"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:gravity="start|center_vertical"
-            android:orientation="horizontal">
+            android:layout_margin="8dp"
+            android:layout_weight="3"
+            android:gravity="center_vertical|end"
+            android:orientation="horizontal"
+            android:padding="3dp">
 
             <TextView
                 android:id="@+id/timerLabel"
@@ -93,28 +106,34 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:text="@string/label_timer"
-                android:textColor="@color/solid_green"
+                android:textColor="@color/deep_blue"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/timerView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start|center_vertical"
-                android:text=""
-                android:textColor="@color/solid_green"
-                android:textStyle="bold" />
+                android:layout_gravity="center_vertical|end"
+                android:layout_margin="5dp"
+                android:paddingHorizontal="5dp"
+                android:text="@string/empty_two_digits"
+                android:textColor="@color/deep_blue"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/taskLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_element_spacing"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/headerLayout"
         tools:layout_editor_absoluteX="3dp">
 
         <TextView
@@ -125,8 +144,8 @@
             android:layout_weight="1"
             android:background="@drawable/shape_textfields"
             android:gravity="center"
-            android:textColor="@color/bg_light"
-            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <EditText
@@ -134,26 +153,31 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="@dimen/margin_text_spacing"
+            android:layout_weight="1"
             android:background="@drawable/shape_textfields"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/result_hint"
+            android:importantForAutofill="no"
             android:inputType="number"
-            android:textColor="@color/bg_light"
-            android:textSize="16sp" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/bg_light"
+            android:textSize="20sp"
+            tools:ignore="TextContrastCheck" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/buttonsLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/margin_element_spacing"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonCheck"
                 style="@style/game_action_button"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:text="@string/button_check"
                 android:textStyle="bold" />
@@ -161,6 +185,7 @@
             <Button
                 android:id="@+id/buttonExit"
                 style="@style/game_action_button"
+                android:layout_height="50dp"
                 android:text="@string/button_exit"
                 android:textStyle="bold" />
 

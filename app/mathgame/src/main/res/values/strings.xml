@@ -1,5 +1,11 @@
 <resources>
-    <string name="number_default">"0"</string>
+    <string name ="main_title">Math games</string>
+    <string name ="result_title">Congratulations!!!</string>
+    <string name ="game_addition_title">Addition game</string>
+    <string name ="game_multiplication_title">Multiplication_game</string>
+
+    <string name="number_default" translatable="false">"0"</string>
+    <string name="empty_two_digits" translatable="false">"   "</string>
     <string name="app_name">MathGame</string>
     <string name="menu_addition">Addition game</string>
     <string name="menu_multiplication">Multiplication game</string>
@@ -7,7 +13,7 @@
 
     <string name="label_life">Lives:</string>
     <string name="label_score">Score:</string>
-    <string name="label_timer">Seconds left:</string>
+    <string name="label_timer">Time: </string>
 
     <string name="button_next">Next</string>
     <string name="button_check">Check</string>
@@ -18,7 +24,7 @@
     <string name ="result_hint">Type your result here!</string>
 
     <string name ="message_missing_result">Please enter your answer!</string>
-    <string name ="message_congratulations_title">Congratulations!!!</string>
+    <string name ="message_congratulations_title">Such a great result!</string>
     <string name ="message_congratulations_subtitle">Your score is:</string>
 
     <string name ="invalid_operator_exception">Invalid Operator Provided!</string>

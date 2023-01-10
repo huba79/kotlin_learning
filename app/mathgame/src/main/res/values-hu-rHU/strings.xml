@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Matek Játékosan</string>
+    <string name="main_title">Játsszunk matekesdit!</string>
+    <string name="result_title">Gratulálunk! :)</string>
+    <string name="game_addition_title">Hozzaadósdi</string>
+    <string name="game_multiplication_title">Szorzósdi</string>
+    <string name="menu_addition">Hozzaadósdi</string>
+    <string name="menu_multiplication">Szorzósdi</string>
+    <string name="menu_exit">Kilép</string>
+    <string name="label_life">Életek:</string>
+    <string name="label_score">Eredmény:</string>
+    <string name="label_timer">Idő:</string>
+    <string name="button_next">Tovább</string>
+    <string name="button_check">Ellenőriz</string>
+    <string name="button_exit">Kilép</string>
+    <string name="button_replay">Új játék</string>
+    <string name="button_close">Bezárás</string>
+    <string name="result_hint">Ide írd az eredményt!</string>
+    <string name="message_missing_result">Add meg az eredményed!</string>
+    <string name="message_congratulations_title">Ügyes vagy!</string>
+    <string name="message_congratulations_subtitle">Az eredményed:</string>
+    <string name="invalid_operator_exception">Hibás művelet!</string>
+</resources>

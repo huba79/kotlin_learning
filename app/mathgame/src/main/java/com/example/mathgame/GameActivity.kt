@@ -42,14 +42,14 @@ class GameActivity : AppCompatActivity() {
         }
         newTask()
 
-        timeLeft.observe(this@GameActivity, Observer<Long>{
+        timeLeft.observe(this@GameActivity) {
             //Log.d("resultCheck","time remaining...$it")
-            if(it>0) binding.timerView.text = it.toString()
+            if (it > 0) binding.timerView.text = it.toString()
             else {
-                Log.d("resultCheck","Time is up. Autocheck called from observer.")
-                checkAnswer(true)
+                //Log.d("resultCheck","Time is up. Autocheck called from observer.")
+                // checkAnswer(true)
             }
-        })
+        }
 
         binding.buttonCheck.setOnClickListener{
             timer.cancel()
@@ -90,6 +90,7 @@ class GameActivity : AppCompatActivity() {
         binding.scoreView.text="${currentGame.currentScore}"
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         proceedToSummary()
     }

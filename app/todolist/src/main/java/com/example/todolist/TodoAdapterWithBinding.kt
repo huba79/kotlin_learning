@@ -1,5 +1,6 @@
 package com.example.todolist
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todolist.databinding.ListItemBinding;
 
 class TodoAdapterWithBinding(pTodos:ArrayList<String>, pContext :Context):RecyclerView.Adapter<TodoAdapterWithBinding.TodoViewHolder>(){
     private var context = pContext
@@ -26,11 +26,12 @@ class TodoAdapterWithBinding(pTodos:ArrayList<String>, pContext :Context):Recycl
         return TodoViewHolder(itemView)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(itemViewHolder: TodoViewHolder, itemPosition: Int) {
         itemViewHolder.textView.text = todos[itemPosition]
         Log.d("onBind","itemView bound, ${todos[itemPosition]} added")
 
-        itemViewHolder.itemView.setOnLongClickListener() {
+        itemViewHolder.itemView.setOnLongClickListener {
             val builder = AlertDialog.Builder(context)
             builder.setTitle(R.string.confirm_delete_title)
             builder.setMessage(R.string.confirm_delete_question)

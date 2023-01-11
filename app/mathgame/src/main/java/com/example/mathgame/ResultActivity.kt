@@ -1,11 +1,10 @@
 package com.example.mathgame
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mathgame.databinding.ActivityResultBinding
-import kotlin.system.exitProcess
 
 
 class ResultActivity : AppCompatActivity() {
@@ -19,7 +18,7 @@ class ResultActivity : AppCompatActivity() {
         @Suppress("DEPRECATION")
         val game = intent.getSerializableExtra("game") as? Game
         binding.finalScoreView.text =
-            if (game == null) "0" else game?.currentScore.toString();
+            if (game == null) "0" else game.currentScore.toString()
 
         binding.closeButton.setOnClickListener { this.finishAffinity() }
 
@@ -28,6 +27,7 @@ class ResultActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         Toast
             .makeText(this@ResultActivity,"Use the exit button to leave the application!", Toast.LENGTH_SHORT)

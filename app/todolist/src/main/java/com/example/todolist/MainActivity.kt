@@ -1,5 +1,6 @@
 package com.example.todolist
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -7,7 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todolist.databinding.ActivityMainBinding
-import com.example.todolist.databinding.ListItemBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var todos:ArrayList<String>
@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var todoInput: TextView
     private val fileHelper = FileHelper(this@MainActivity)
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
         }
-        binding.root.setOnClickListener(){
+        binding.root.setOnClickListener {
             Toast.makeText(this@MainActivity,resources.getText(R.string.infoMessage),Toast.LENGTH_SHORT ).show()
         }
 

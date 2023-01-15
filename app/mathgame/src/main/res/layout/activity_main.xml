@@ -1,41 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@mipmap/bg3"
+    android:background="@color/bg_light"
     android:gravity="center_vertical"
-    android:orientation="vertical"
-    android:padding="@dimen/menu_padding"
-    tools:context=".MainActivity">
+    android:theme="@style/Theme.Math"
+    tools:context=".ui.MainActivity">
 
-    <Button
-        android:id="@+id/multiplicationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        android:layout_margin="@dimen/menu_button_margin"
-        android:text="@string/menu_addition"
-        tools:ignore="SpeakableTextPresentCheck" />
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/additionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        android:layout_margin="@dimen/menu_button_margin"
-        android:text="@string/menu_multiplication"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/additionButton"
+            style="@style/app_action_button"
+            android:layout_marginVertical="30dp"
+            android:text="@string/menu_addition"
+            tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
-    <Button
-        android:id="@+id/exitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        android:layout_margin="@dimen/menu_button_margin"
-        android:text="@string/menu_exit"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/multiplicationButton"
+            style="@style/app_action_button"
+            android:layout_marginVertical="30dp"
+            android:gravity="center"
+            android:text="@string/menu_multiplication"
+            tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/settingsButton"
+            style="@style/app_action_button"
+            android:layout_marginVertical="30dp"
+            android:gravity="center"
+            android:text="@string/menu_settings"
+            tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+
+        <Button
+            android:id="@+id/exitButton"
+            style="@style/app_action_button"
+            android:layout_marginVertical="30dp"
+            android:gravity="center"
+            android:text="@string/menu_exit"
+            tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg1"
-    tools:context=".GameActivity">
+    android:background="@color/bg_light"
+    android:theme="@style/Theme.Game"
+    tools:context=".ui.GameActivity">
 
     <LinearLayout
         android:id="@+id/headerLayout"
@@ -26,7 +27,7 @@
             android:id="@+id/lifeLayout"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_margin="8dp"
+            android:layout_margin="4dp"
             android:layout_weight="3"
             android:gravity="start|center_vertical"
             android:orientation="horizontal"
@@ -60,7 +61,7 @@
             android:id="@+id/scoreLayout"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_margin="8dp"
+            android:layout_margin="4dp"
             android:layout_weight="5"
             android:gravity="center_horizontal|center_vertical"
             android:orientation="horizontal"
@@ -94,7 +95,7 @@
             android:id="@+id/timerLayout"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_margin="8dp"
+            android:layout_margin="4dp"
             android:layout_weight="3"
             android:gravity="center_vertical|end"
             android:orientation="horizontal"
@@ -168,8 +169,8 @@
         <LinearLayout
             android:id="@+id/buttonsLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/margin_element_spacing"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_text_spacing"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -177,7 +178,6 @@
                 android:id="@+id/buttonCheck"
                 style="@style/game_action_button"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:text="@string/button_check"
                 android:textStyle="bold" />
@@ -185,7 +185,7 @@
             <Button
                 android:id="@+id/buttonExit"
                 style="@style/game_action_button"
-                android:layout_height="50dp"
+                android:layout_weight="1"
                 android:text="@string/button_exit"
                 android:textStyle="bold" />
 

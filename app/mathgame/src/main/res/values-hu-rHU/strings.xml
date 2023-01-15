@@ -21,4 +21,18 @@
     <string name="message_congratulations_title">Ügyes vagy!</string>
     <string name="message_congratulations_subtitle">Az eredményed:</string>
     <string name="invalid_operator_exception">Hibás művelet!</string>
+    <string name="menu_settings">Beállítások</string>
+    <string name="quickness_bonus">Gyorsasági bónusz</string>
+    <string name="limit_multiplication_maximum">Szorzás felső határ</string>
+    <string name="limit_multiplication_minimum">Szorzás alsó határ</string>
+    <string name="limit_addition_maximum">Összeadás felső határ</string>
+    <string name="limit_addition_minimum">Összeadás alsó határ</string>
+    <string name="limit_countdown">Időkorlát</string>
+    <string name="button_save_and_exit">Mentés és kilépés</string>
+    <string name="toast_use_save_button">Kérjük használd a Mentés gombot a kilépéshez!</string>
+    <string name="limit_lives">Max élet</string>
+    <string name="dialog_confirm_exit_game_title">Biztosan kilépnél?</string>
+    <string name="dialog_confirm_exit_game_message">Biztosan abba szeretnéd hagyni a folyó játékot?</string>
+    <string name="dialog_positive_button">Persze!</string>
+    <string name="dialog_negative_button">Semmiképp!</string>
 </resources>

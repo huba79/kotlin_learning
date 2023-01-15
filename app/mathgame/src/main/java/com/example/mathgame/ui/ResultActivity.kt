@@ -1,10 +1,11 @@
-package com.example.mathgame
+package com.example.mathgame.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mathgame.databinding.ActivityResultBinding
+import com.example.mathgame.game.Game
 
 
 class ResultActivity : AppCompatActivity() {

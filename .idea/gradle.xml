@@ -7,21 +7,20 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="Embedded JDK" />
+        <option name="gradleJvm" value="openjdk-19" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/app/densities_failed" />
             <option value="$PROJECT_DIR$/app/fragmentslifecycle" />
             <option value="$PROJECT_DIR$/app/gridview" />
             <option value="$PROJECT_DIR$/app/mathgame" />
-            <option value="$PROJECT_DIR$/app/mylibrary" />
             <option value="$PROJECT_DIR$/app/pixeldensities" />
             <option value="$PROJECT_DIR$/app/recyclerview" />
             <option value="$PROJECT_DIR$/app/screensizes" />
             <option value="$PROJECT_DIR$/app/services" />
             <option value="$PROJECT_DIR$/app/sharedpreferences" />
+            <option value="$PROJECT_DIR$/app/test" />
             <option value="$PROJECT_DIR$/app/todolist" />
             <option value="$PROJECT_DIR$/app/viewbinding" />
           </set>

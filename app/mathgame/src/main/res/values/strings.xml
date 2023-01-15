@@ -1,14 +1,15 @@
 <resources>
-    <string name ="main_title">Math games</string>
-    <string name ="result_title">Congratulations!!!</string>
-    <string name ="game_addition_title">Addition game</string>
-    <string name ="game_multiplication_title">Multiplication_game</string>
+    <string name="main_title">Math games</string>
+    <string name="result_title">Congratulations!!!</string>
+    <string name="game_addition_title">Addition game</string>
+    <string name="game_multiplication_title">Multiplication game</string>
 
     <string name="number_default" translatable="false">"0"</string>
-    <string name="empty_two_digits" translatable="false">"   "</string>
+    <string name="empty_two_digits" translatable="false">" "</string>
     <string name="app_name">MathGame</string>
     <string name="menu_addition">Addition game</string>
     <string name="menu_multiplication">Multiplication game</string>
+    <string name="menu_settings">Settings</string>
     <string name="menu_exit">Exit</string>
 
     <string name="label_life">Lives:</string>
@@ -20,12 +21,28 @@
     <string name="button_exit">Exit</string>
     <string name="button_replay">Start another game</string>
     <string name="button_close">Close the application</string>
+    <string name="button_save_and_exit">Save and exit</string>
 
-    <string name ="result_hint">Type your result here!</string>
+    <string name="result_hint">Type your result here!</string>
 
-    <string name ="message_missing_result">Please enter your answer!</string>
-    <string name ="message_congratulations_title">Such a great result!</string>
-    <string name ="message_congratulations_subtitle">Your score is:</string>
+    <string name="message_missing_result">Please enter your answer!</string>
+    <string name="message_congratulations_title">Such a great result!</string>
+    <string name="message_congratulations_subtitle">Your score is:</string>
 
-    <string name ="invalid_operator_exception">Invalid Operator Provided!</string>
+    <string name="invalid_operator_exception">Invalid Operator Provided!</string>
+
+    <string name="task_assessment" translatable="false">%1$d %2$s %3$d =?</string>
+    <string name="limit_multiplication_maximum">Multiplication maximum</string>
+    <string name="limit_multiplication_minimum">Multiplication minimum</string>
+    <string name="limit_addition_maximum">Addition maximum</string>
+    <string name="limit_addition_minimum">Addition minimum</string>
+    <string name="limit_countdown">Time Limit</string>
+    <string name="quickness_bonus">Quickness bonus</string>
+    <string name="limit_lives">Maximum lives</string>
+    <string name="toast_use_save_button">Use the Save button to navigate back!</string>
+    <string name="dialog_confirm_exit_game_title">Please confirm</string>
+    <string name="dialog_confirm_exit_game_message">Would you really like to abort the current game? You might make a baby seal cry somewhere…</string>
+    <string name="dialog_positive_button">Sure</string>
+    <string name="dialog_negative_button">Nope</string>
+
 </resources>

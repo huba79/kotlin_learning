@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg2"
-    tools:context=".ResultActivity">
+    android:background="@color/bg_light"
+    android:theme="@style/Theme.Result"
+    tools:context=".ui.ResultActivity">
 
     <TextView
         android:id="@+id/finalScoreView"
         android:layout_width="271dp"
         android:layout_height="130dp"
         android:layout_marginTop="20dp"
-        android:gravity="center_horizontal|center_vertical"
+        android:gravity="center"
         android:textColor="@color/orange_dark"
         android:textSize="96sp"
         android:textStyle="bold"
@@ -20,26 +21,12 @@
         app:layout_constraintStart_toStartOf="@+id/replayButton"
         app:layout_constraintTop_toBottomOf="@+id/congratsSubtitleView" />
 
-    <Button
-        android:id="@+id/closeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/button_close"
-        android:textColor="@color/orange_dark"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/replayButton" />
-
     <TextView
         android:id="@+id/congratsSubtitleView"
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_marginTop="20dp"
-        android:gravity="center_horizontal|center_vertical"
+        android:gravity="center"
         android:text="@string/message_congratulations_subtitle"
         android:textColor="@color/orange_dark"
         android:textSize="24sp"
@@ -53,7 +40,7 @@
         android:layout_width="311dp"
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
-        android:gravity="center_horizontal|center_vertical"
+        android:gravity="center"
         android:text="@string/message_congratulations_title"
         android:textColor="@color/orange_dark"
         android:textSize="32sp"
@@ -64,16 +51,21 @@
 
     <Button
         android:id="@+id/replayButton"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="80dp"
-        android:backgroundTint="#FF5722"
-        android:gravity="center_horizontal|center_vertical"
         android:text="@string/button_replay"
-        android:textColor="#F9FBE7"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/closeButton"
         app:layout_constraintStart_toStartOf="@+id/closeButton"
-        app:layout_constraintTop_toBottomOf="@+id/finalScoreView" />
+        app:layout_constraintTop_toBottomOf="@+id/finalScoreView"
+        style="@style/result_buttons_style" />
+
+    <Button
+        android:id="@+id/closeButton"
+        style="@style/result_buttons_style"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/button_close"
+        android:textColor="@color/orange_dark"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/replayButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

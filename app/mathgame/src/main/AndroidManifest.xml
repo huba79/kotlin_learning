@@ -6,30 +6,33 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.Widgets"
         android:supportsRtl="true">
         <activity
-            android:name=".ResultActivity"
-            android:label="@string/result_title"
+            android:name=".ui.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ResultActivity"
             android:exported="false"
+            android:label="@string/result_title"
             android:theme="@style/Theme.Result">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".GameActivity"
-            android:label="@string/main_title"
+            android:name=".ui.GameActivity"
             android:exported="false"
+            android:label="@string/main_title"
             android:theme="@style/Theme.Game">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="@string/main_title"
+            android:name=".ui.MainActivity"
             android:exported="true"
+            android:label="@string/main_title"
             android:theme="@style/Theme.Math">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

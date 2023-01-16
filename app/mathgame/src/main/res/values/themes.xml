@@ -1,16 +1,32 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.Widgets" parent="Theme.MaterialComponents.DayNight.Bridge">
+    <!-- Using Material Design 3 guidelines. -->
+    <!-- Only applies to the Widgets theme so far -->
+    <style name="Theme.Widgets" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/solid_green</item>
-        <item name="colorPrimaryVariant">@color/deep_blue</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/deep_blue</item>
+
+        <item name="colorPrimaryContainer">@color/white</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+        <item name="colorPrimaryInverse">@color/white</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/bg_dark</item>
         <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondaryContainer">@color/bg_dark</item>
+        <item name="colorOnSecondaryContainer">@color/bg_dark</item>
+
+        <!-- Tertiary brand color. -->
+        <item name="colorTertiary">@color/bg_dark</item>
+        <item name="colorTertiaryContainer">@color/bg_dark</item>
+        <item name="colorOnTertiaryContainer">@color/bg_dark</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+
         <!-- Customize your theme here. -->
     </style>
 
@@ -54,8 +70,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="Theme.Settings" parent="Theme.MaterialComponents.DayNight.Bridge">
-">
+    <style name="Theme.Settings" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/solid_green</item>
         <item name="colorPrimaryVariant">@color/green_night</item>
@@ -64,9 +79,6 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/bg_dark</item>
         <item name="colorOnSecondary">@color/black</item>
-<!--        <item name="colorAccent">#262C26</item>-->
-<!--        <item name="android:colorActivatedHighlight">#9F0D3E</item>-->
-        <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorSecondaryVariant</item>
         <!-- Customize your theme here. -->
     </style>

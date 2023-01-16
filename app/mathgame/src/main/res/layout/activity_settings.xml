@@ -5,10 +5,8 @@
     android:id="@+id/settingsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:gravity="center"
     android:orientation="vertical"
-    app:theme="@style/Theme.Settings"
     tools:context=".ui.SettingsActivity">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -34,7 +32,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-
+        android:layout_margin="10dp"
+        app:boxStrokeWidth="2dp"
         android:hint="@string/limit_countdown"
         app:helperTextTextColor="@color/orange_dark">
 

@@ -10,6 +10,8 @@
         android:supportsRtl="true">
         <activity
             android:name=".ui.SettingsActivity"
+            android:theme="@style/Theme.Settings"
+            android:label="@string/title_settings"
             android:exported="false" />
         <activity
             android:name=".ui.ResultActivity"

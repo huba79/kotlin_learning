@@ -44,7 +44,7 @@
 
     <Button
         android:id="@+id/replayButton"
-        style="@style/app_action_button"
+        style="@style/action_button_style"
         android:layout_width="wrap_content"
         android:layout_margin="20dp"
         android:background="@drawable/shape_button_result"
@@ -53,13 +53,13 @@
 
     <Button
         android:id="@+id/closeButton"
-        style="@style/app_action_button"
+        style="@style/action_button_style"
         android:layout_width="wrap_content"
         android:layout_margin="20dp"
         android:background="@drawable/shape_button_result"
         android:gravity="center_horizontal|center_vertical"
         android:text="@string/button_close"
-        android:textColor="@color/deep_blue"
+        android:textColor="@color/blue_deep"
         android:textStyle="bold" />
 
 </LinearLayout>

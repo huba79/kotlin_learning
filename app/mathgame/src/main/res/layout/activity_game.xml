@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:text="@string/label_life"
-                android:textColor="@color/deep_blue"
+                android:textColor="@color/blue_deep"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -49,7 +49,7 @@
                 android:layout_margin="5dp"
                 android:paddingHorizontal="5dp"
                 android:text="@string/empty_two_digits"
-                android:textColor="@color/deep_blue"
+                android:textColor="@color/blue_deep"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:text="@string/label_score"
-                android:textColor="@color/deep_blue"
+                android:textColor="@color/blue_deep"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -83,7 +83,7 @@
                 android:layout_margin="5dp"
                 android:paddingHorizontal="5dp"
                 android:text="@string/empty_two_digits"
-                android:textColor="@color/deep_blue"
+                android:textColor="@color/blue_deep"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:text="@string/label_timer"
-                android:textColor="@color/deep_blue"
+                android:textColor="@color/blue_deep"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -117,7 +117,7 @@
                 android:layout_margin="5dp"
                 android:paddingHorizontal="5dp"
                 android:text="@string/empty_two_digits"
-                android:textColor="@color/deep_blue"
+                android:textColor="@color/blue_deep"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
@@ -143,7 +143,7 @@
             android:layout_weight="1"
             android:background="@drawable/shape_textfields"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/white_shade1"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -159,8 +159,8 @@
             android:hint="@string/result_hint"
             android:importantForAutofill="no"
             android:inputType="number"
-            android:textColor="@color/white"
-            android:textColorHint="@color/bg_light"
+            android:textColor="@color/white_shade1"
+            android:textColorHint="@color/beige_light"
             android:textSize="20sp"
             tools:ignore="TextContrastCheck" />
 
@@ -174,15 +174,16 @@
 
             <Button
                 android:id="@+id/buttonCheck"
-                style="@style/game_action_button"
+                style="@style/game_button_style"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:backgroundTint="#B64545"
                 android:text="@string/button_check"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/buttonExit"
-                style="@style/game_action_button"
+                style="@style/game_button_style"
                 android:layout_weight="1"
                 android:text="@string/button_exit"
                 android:textStyle="bold" />

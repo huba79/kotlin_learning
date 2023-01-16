@@ -15,8 +15,8 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:boxStrokeWidth="2dp"
-        android:hint="@string/limit_lives">
+        android:hint="@string/limit_lives"
+        app:boxStrokeWidth="2dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/livesEdit"
@@ -33,8 +33,8 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:boxStrokeWidth="2dp"
         android:hint="@string/limit_countdown"
+        app:boxStrokeWidth="2dp"
         app:helperTextTextColor="@color/orange_dark">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -73,9 +73,9 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:boxStrokeWidth="2dp"
         android:hint="@string/limit_addition_minimum"
-        android:inputType="number">
+        android:inputType="number"
+        app:boxStrokeWidth="2dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/additionMinEdit"
@@ -92,9 +92,9 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:boxStrokeWidth="2dp"
         android:hint="@string/limit_addition_maximum"
-        android:inputType="number">
+        android:inputType="number"
+        app:boxStrokeWidth="2dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/additionMaxEdit"
@@ -112,9 +112,9 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:boxStrokeWidth="2dp"
         android:hint="@string/limit_multiplication_minimum"
-        android:inputType="number">
+        android:inputType="number"
+        app:boxStrokeWidth="2dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/multiplicationMinEdit"
@@ -131,8 +131,8 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:boxStrokeWidth="2dp"
-        android:hint="@string/limit_multiplication_maximum">
+        android:hint="@string/limit_multiplication_maximum"
+        app:boxStrokeWidth="2dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/multiplicationMaxEdit"
@@ -145,7 +145,7 @@
 
     <Button
         android:id="@+id/saveButton"
-        style="@style/app_action_button"
+        style="@style/action_button_style"
         android:layout_marginTop="80dp"
         android:text="@string/button_save_and_exit" />
 

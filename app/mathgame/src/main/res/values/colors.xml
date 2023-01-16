@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="green_night">#58D389</color>
-    <color name="solid_green">#FF018786</color>
-    <color name="fire_orange">#FF5722</color>
-    <color name="orange_dark">#A3300B</color>
-    <color name="ice_blue">#2196F3</color>
-    <color name="deep_blue">#3F51B5</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="bg_dark">#2B7552</color>
-    <color name="black">#320000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="bg_light">#ECCFC0</color>
-    <color name="bleed_purple">#510719</color>
-
-    <color name="primaryColor">#1a237e</color>
-    <color name="primaryLightColor">#534bae</color>
-    <color name="primaryDarkColor">#000051</color>
-    <color name="primaryTextColor">#ffffff</color>
-
+    <color name="green_dark">#116030</color>
+    <color name="green_light">#58AA89</color>
+    <color name="green_solid">#FF018786</color>
+    <color name="orange_fire">#FF5722</color>
+    <color name="orange_dark">#CC4030</color>
+    <color name="blue_deep">#1a237e</color>
+    <color name="blue_ice">#2196F3</color>
+    <color name="purple_light">#534bae</color>
+    <color name="blue_light_luminescent">#8BDAD2</color>
+    <color name="beige_light">#ECCFC0</color>
+    <color name="white_shade1">#EEEEEE</color>
+    <color name="white_shade2">#CCEECC</color>
+    <color name="white_high">#ffffff</color>
+    <color name="bordeaux_dark">#470B0B</color>
+    <color name="bordeaux_solid">#8C0C2B</color>
+    <color name="bordeaux_light">#97475A</color>
 </resources>

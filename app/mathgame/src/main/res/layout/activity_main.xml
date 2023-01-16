@@ -17,7 +17,7 @@
 
         <Button
             android:id="@+id/additionButton"
-            style="@style/app_action_button"
+            style="@style/action_button_style"
             android:layout_marginVertical="30dp"
             android:minWidth="220dp"
             android:text="@string/menu_addition"
@@ -25,7 +25,7 @@
 
         <Button
             android:id="@+id/multiplicationButton"
-            style="@style/app_action_button"
+            style="@style/action_button_style"
             android:layout_marginVertical="30dp"
             android:gravity="center"
             android:minWidth="220dp"
@@ -34,7 +34,7 @@
 
         <Button
             android:id="@+id/settingsButton"
-            style="@style/app_action_button"
+            style="@style/action_button_style"
             android:layout_marginVertical="30dp"
             android:gravity="center"
             android:minWidth="220dp"
@@ -43,7 +43,7 @@
 
         <Button
             android:id="@+id/exitButton"
-            style="@style/app_action_button"
+            style="@style/action_button_style"
             android:layout_marginVertical="30dp"
             android:gravity="center"
             android:minWidth="220dp"

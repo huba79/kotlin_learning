@@ -54,7 +54,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="Theme.Settings" parent="Theme.MaterialComponents.DayNight.Bridge">
+    <style name="Theme.Settings" parent="Theme.MaterialComponents.DayNight">
 ">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/solid_green</item>

@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/bg_light"
     android:gravity="center_vertical"
-    android:theme="@style/Theme.Math"
     tools:context=".ui.MainActivity">
 
     <LinearLayout
@@ -21,6 +19,7 @@
             android:id="@+id/additionButton"
             style="@style/app_action_button"
             android:layout_marginVertical="30dp"
+            android:minWidth="220dp"
             android:text="@string/menu_addition"
             tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
@@ -29,6 +28,7 @@
             style="@style/app_action_button"
             android:layout_marginVertical="30dp"
             android:gravity="center"
+            android:minWidth="220dp"
             android:text="@string/menu_multiplication"
             tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
@@ -37,6 +37,7 @@
             style="@style/app_action_button"
             android:layout_marginVertical="30dp"
             android:gravity="center"
+            android:minWidth="220dp"
             android:text="@string/menu_settings"
             tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
@@ -45,6 +46,7 @@
             style="@style/app_action_button"
             android:layout_marginVertical="30dp"
             android:gravity="center"
+            android:minWidth="220dp"
             android:text="@string/menu_exit"
             tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
     </LinearLayout>

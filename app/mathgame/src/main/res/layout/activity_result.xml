@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ui.ResultActivity">
+    tools:context=".ui.ResultActivity"
+    style="@style/style_main_layout_bg">
 
     <TextView
         android:id="@+id/congratsTitleView"

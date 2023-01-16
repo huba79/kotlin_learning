@@ -14,7 +14,7 @@
 
     <style name="app_action_button">
         <item name="android:gravity">center</item>
-        <item name="android:background">"@drawable/shape_button"</item>
+        <item name="android:background">"@drawable/shape_button_action"</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">@dimen/active_element_height</item>
         <item name="android:layout_margin">25dp</item>
@@ -35,6 +35,10 @@
         <item name="android:gravity">center_horizontal|center_vertical</item>
         <item name="android:textColor">#F9FBE7</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="style_main_layout_bg" >
+        <item name="android:background">?colorSecondaryVariant</item>
     </style>
 
 </resources>

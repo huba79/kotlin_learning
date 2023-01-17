@@ -10,6 +10,7 @@ class Game(val type: GameTypesEnum, settings: GameSettings) : Serializable {
     var currentScore = 0
     var livesLeft = gameSettings.livesAvailable
     lateinit var currentTask: Pair<Int, Int>
+    var timeToExpire:Int = settings.timeFrame
 
     fun getNewTask(){
         currentTask = when(type){
@@ -32,7 +33,6 @@ class Game(val type: GameTypesEnum, settings: GameSettings) : Serializable {
          currentScore+=10
     }
     fun taskSuccessfulWithBonus(bonus:Int){
-        //TODO implement performance bias controlled by gameSettings.timeleftBias
         currentScore+=10 +bonus
     }
 
@@ -42,29 +42,17 @@ class Game(val type: GameTypesEnum, settings: GameSettings) : Serializable {
         Log.d("mathLog","Lives left after the fail: $livesLeft")
     }
 
-    fun evaluate(response:Int){
+    fun evaluateResponse(response:Int, timeLeft:Int){
+        val bonus = if (gameSettings.rewardPerformance) timeLeft/10 else 0
         when(type) {
             GameTypesEnum.ADDITION ->{
                 Log.d("mathLog","${response} = ${currentTask.first} + ${currentTask.second} ?")
-                if(response == currentTask.first+currentTask.second) taskSuccessful()
+                if(response == currentTask.first+currentTask.second) taskSuccessfulWithBonus(bonus)
                 else taskFailed()
             }
             GameTypesEnum.MULTIPLICATION ->{
                 Log.d("mathLog","${response} = ${currentTask.first} * ${currentTask.second} ?")
-                if(response == currentTask.first*currentTask.second) taskSuccessful()
-                else taskFailed()}
-        }
-    }
-    fun evaluateWithBonus(response:Int, timeLeft:Int){
-        when(type) {
-            GameTypesEnum.ADDITION ->{
-                Log.d("mathLog","${response} = ${currentTask.first} + ${currentTask.second} ?")
-                if(response == currentTask.first+currentTask.second) taskSuccessfulWithBonus(if (gameSettings.rewardPerformance) timeLeft/10 else 0)
-                else taskFailed()
-            }
-            GameTypesEnum.MULTIPLICATION ->{
-                Log.d("mathLog","${response} = ${currentTask.first} * ${currentTask.second} ?")
-                if(response == currentTask.first*currentTask.second) taskSuccessfulWithBonus(if (gameSettings.rewardPerformance) timeLeft/10 else 0)
+                if(response == currentTask.first*currentTask.second) taskSuccessfulWithBonus(bonus)
                 else taskFailed()}
         }
     }

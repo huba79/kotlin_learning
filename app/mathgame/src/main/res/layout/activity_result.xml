@@ -49,6 +49,7 @@
         android:layout_margin="20dp"
         android:background="@drawable/shape_button_result"
         android:gravity="center_horizontal|center_vertical"
+        android:minWidth="150dp"
         android:text="@string/button_replay" />
 
     <Button
@@ -58,6 +59,7 @@
         android:layout_margin="20dp"
         android:background="@drawable/shape_button_result"
         android:gravity="center_horizontal|center_vertical"
+        android:minWidth="150dp"
         android:text="@string/button_close"
         android:textColor="@color/blue_deep"
         android:textStyle="bold" />

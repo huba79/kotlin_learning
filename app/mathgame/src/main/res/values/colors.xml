@@ -18,4 +18,5 @@
     <color name="bordeaux_solid">#8C0C2B</color>
     <color name="bordeaux_light">#97475A</color>
     <color name="gray_neutral">#585863</color>
+    <color name="color_border">#FC292E29</color>
 </resources>

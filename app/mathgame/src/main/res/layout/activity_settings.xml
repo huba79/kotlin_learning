@@ -12,36 +12,30 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout0"
         style="@style/text_input_layout"
-        android:hint="@string/limit_lives"
-        app:boxStrokeWidth="2dp">
+        android:hint="@string/limit_lives">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/livesEdit"
-            tools:ignore="TouchTargetSizeCheck"
-            style="@style/text_input_layout_edit" />
+            style="@style/inputLayout_editText"
+            tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout1"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="250dp"
+        style="@style/text_input_layout"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="@string/limit_countdown"
-        app:boxStrokeWidth="2dp"
         app:helperTextTextColor="@color/orange_dark">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/timeLimitEdit"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:inputType="number"
-            android:minWidth="32dp"
+            style="@style/inputLayout_editText"
             tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
-        android:layout_width="250dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:gravity="start|center_vertical"
         android:orientation="horizontal">
@@ -55,24 +49,25 @@
         <TextView
             android:id="@+id/performanceRewardCheckboxLabel"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="50dp"
             android:gravity="start|center_vertical"
             android:labelFor="@id/performanceRewardCheckbox"
-            android:text="@string/quickness_bonus" />
+            android:text="@string/quickness_bonus"
+            android:textColor="?colorPrimary"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout3"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="250dp"
+        style="@style/text_input_layout"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="@string/limit_addition_minimum"
-        android:inputType="number"
-        app:boxStrokeWidth="2dp">
+        android:inputType="number">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/additionMinEdit"
+            style="@style/inputLayout_editText"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint=""
@@ -82,16 +77,15 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout4"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="250dp"
+        style="@style/text_input_layout"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="@string/limit_addition_maximum"
-        android:inputType="number"
-        app:boxStrokeWidth="2dp">
+        android:inputType="number">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/additionMaxEdit"
+            style="@style/inputLayout_editText"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint=""
@@ -102,16 +96,15 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout5"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="250dp"
+        style="@style/text_input_layout"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="@string/limit_multiplication_minimum"
-        android:inputType="number"
-        app:boxStrokeWidth="2dp">
+        android:inputType="number">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/multiplicationMinEdit"
+            style="@style/inputLayout_editText"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint=""
@@ -121,15 +114,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout6"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="250dp"
+        style="@style/text_input_layout"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="@string/limit_multiplication_maximum"
-        app:boxStrokeWidth="2dp">
+        android:hint="@string/limit_multiplication_maximum">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/multiplicationMaxEdit"
+            style="@style/inputLayout_editText"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:inputType="number"

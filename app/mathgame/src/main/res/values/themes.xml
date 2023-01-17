@@ -6,16 +6,12 @@
         <item name="colorPrimary">@color/green_dark</item>
         <item name="colorOnPrimary">@color/white_shade1</item>
         <item name="colorPrimaryVariant">@color/green_solid</item>
-
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/blue_deep</item>
-        <item name="colorOnSecondary">@color/white_shade1</item>
-        <item name="colorSecondaryVariant">@color/purple_light</item>
-
-        <!-- Tertiary brand color. -->
-        <item name="colorSurface">@color/beige_light</item>
-        <item name="colorOnSurface">@color/bordeaux_dark</item>
-
+        <item name="colorPrimaryDark">@color/white_shade1</item>
+        <item name="colorAccent">@color/gray_neutral</item>
+        <!-- Surface colors. -->
+        <item name="colorSurface">@color/green_dark</item>
+        <item name="colorOnSurface">@color/white_shade1</item>
+        <!-- Error colors. -->
         <item name="colorError">@color/bordeaux_solid</item>
         <item name="colorOnError">@color/white_high</item>
 
@@ -24,7 +20,6 @@
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?colorPrimaryVariant</item>
-        <item name="actionBarTheme">@style/greenActionBar</item>
 
         <!-- Customize your theme here. -->
     </style>
@@ -34,16 +29,12 @@
         <item name="colorPrimary">@color/orange_dark</item>
         <item name="colorOnPrimary">@color/white_shade1</item>
         <item name="colorPrimaryVariant">@color/orange_fire</item>
-
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/blue_deep</item>
-        <item name="colorOnSecondary">@color/white_shade1</item>
-        <item name="colorSecondaryVariant">@color/purple_light</item>
-
-        <!-- Tertiary brand color. -->
-        <item name="colorSurface">@color/beige_light</item>
-        <item name="colorOnSurface">@color/bordeaux_dark</item>
-
+        <item name="colorPrimaryDark">@color/white_shade1</item>
+        <item name="colorAccent">@color/gray_neutral</item>
+        <!-- Surface colors. -->
+        <item name="colorSurface">@color/orange_dark</item>
+        <item name="colorOnSurface">@color/white_shade1</item>
+        <!-- Error colors. -->
         <item name="colorError">@color/bordeaux_solid</item>
         <item name="colorOnError">@color/white_high</item>
 
@@ -52,7 +43,6 @@
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?colorPrimaryVariant</item>
-        <item name="actionBarTheme">@style/orangeActionBar</item>
 
         <!-- Customize your theme here. -->
     </style>
@@ -62,44 +52,22 @@
         <item name="colorPrimary">@color/blue_deep</item>
         <item name="colorOnPrimary">@color/blue_light_luminescent</item>
         <item name="colorPrimaryVariant">@color/blue_ice</item>
-        <item name="colorPrimaryDark">@color/blue_dark</item>
+        <item name="colorPrimaryDark">@color/white_shade1</item>
         <item name="colorAccent">@color/gray_neutral</item>
-
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/blue_deep</item>
-        <item name="colorOnSecondary">@color/white_shade1</item>
-        <item name="colorSecondaryVariant">@color/purple_light</item>
-
-        <!-- Tertiary brand color. -->
-        <item name="colorSurface">@color/beige_light</item>
-        <item name="colorOnSurface">@color/bordeaux_dark</item>
-
+        <!-- Surface colors. -->
+        <item name="colorSurface">@color/blue_deep</item>
+        <item name="colorOnSurface">@color/white_shade1</item>
+        <!-- Error colors. -->
         <item name="colorError">@color/bordeaux_solid</item>
         <item name="colorOnError">@color/white_high</item>
 
-        <item name="android:colorBackground">@color/white_shade2</item>
+        <item name="android:colorBackground">@color/white_shade1</item>
         <item name="colorOnBackground">?colorPrimary</item>
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?colorPrimaryVariant</item>
-        <item name="actionBarTheme">@style/orangeActionBar</item>
 
         <!-- Customize your theme here. -->
-    </style>
-
-    <style name="greenActionBar" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
-        <item name="android:background">?colorOnTertiaryContainer</item>
-        <item name="android:colorForeground">?colorOnPrimary</item>
-    </style>
-
-    <style name="orangeActionBar" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
-        <item name="android:background">?colorOnTertiaryContainer</item>
-        <item name="android:colorForeground">?colorOnPrimary</item>
-    </style>
-
-    <style name="blueActionBar" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
-        <item name="android:background">?colorOnTertiaryContainer</item>
-        <item name="android:colorForeground">?colorOnPrimary</item>
     </style>
 
 </resources>

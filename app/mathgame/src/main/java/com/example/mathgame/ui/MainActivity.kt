@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
+import androidx.appcompat.app.AlertDialog
+import com.example.mathgame.R
 import com.example.mathgame.databinding.ActivityMainBinding
 import com.example.mathgame.game.GameSettings
 import com.example.mathgame.game.GameTypesEnum
@@ -62,11 +64,37 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
             activityMainBinding.exitButton.id -> {
                 Log.d("mathLog","Exit clicked")
-                this.finishAffinity() }
+                    //cleanup insights: must stay in the Activity logic
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle(getString(R.string.dialog_confirm_exit_game_title))
+                    builder.setMessage(getString(R.string.dialog_confirm_exit_app_message))
+
+                    builder.setPositiveButton(getString(R.string.dialog_positive_button)) { dialog, which ->
+                        this.finishAffinity()
+                    }
+                    builder.setNegativeButton(getString(R.string.dialog_negative_button)) { dialog, which -> run {} }
+
+                    builder.show()
+
+            }
 
             else -> {
                 Log.d("mathLog","Invalid element source, will not be handled ${p0?.id} -> ${p0!!::class.java.name}")}
         }
 
+    }
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        //cleanup insights: must stay in the Activity logic
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.dialog_confirm_exit_game_title))
+        builder.setMessage(getString(R.string.dialog_confirm_exit_app_message))
+
+        builder.setPositiveButton(getString(R.string.dialog_positive_button)) { dialog, which ->
+            this.finishAffinity()
+        }
+        builder.setNegativeButton(getString(R.string.dialog_negative_button)) { dialog, which -> run {} }
+
+        builder.show()
     }
 }

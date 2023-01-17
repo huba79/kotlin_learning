@@ -11,20 +11,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout0"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        style="@style/text_input_layout"
         android:hint="@string/limit_lives"
         app:boxStrokeWidth="2dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/livesEdit"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:inputType="number"
-            android:minWidth="32dp"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            style="@style/text_input_layout_edit" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

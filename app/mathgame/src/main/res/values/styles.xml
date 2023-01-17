@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="game_button_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">@dimen/active_element_height</item>
@@ -39,6 +38,30 @@
     <style name="action_bar_style" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">?colorPrimaryVariant</item>
         <item name="android:textColor">?colorOnPrimary</item>
+    </style>
+
+    <style name="text_input_layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textColorHint">?colorPrimary</item>
+        <item name="android:labelTextSize">4dp</item>
+
+    </style>
+
+    <style name="text_input_layout_edit" parent="Widget.MaterialComponents.TimePicker.Display.TextInputEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:inputType">number</item>
+        <item name="android:minWidth">32dp</item>
+        <item name="android:textColor">?colorSecondary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:colorAccent">?colorPrimaryVariant</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingVertical">4dp</item>
+        <item name="android:gravity">center_horizontal|start</item>
+        <item name="android:textSize">16dp</item>
+
     </style>
 
 </resources>

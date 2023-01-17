@@ -54,6 +54,7 @@ class GameActivity : AppCompatActivity() {
         timeLeft.observe(this@GameActivity, fun(it: Long) {
             //Log.d("mathLog","time remaining...$it")
             if (it > 0) binding.timerView.text = it.toString()
+            currentGame.timeToExpire = it.toInt()
         })
 
         binding.buttonCheck.setOnClickListener{
@@ -130,10 +131,13 @@ class GameActivity : AppCompatActivity() {
     fun checkAnswer(isTimeUp:Boolean){
         //cleanup insights: should not stay in the Activity logic, have to move to a viewmodel/service layer
         //TODO: input result as a param for later we need ot move this logic out of the Activity
-        if(binding.resultInputView.text.toString() != ""){
-            val result = binding.resultInputView.text.toString().toInt()
-            currentGame.evaluate(result)
+        val answerString = binding.resultInputView.text.toString()
+        val bonusGainable = currentGame.timeToExpire
+        if( !answerString.isEmpty()){
+            val result = answerString.toInt()
+            currentGame.evaluateResponse(result,bonusGainable)
             Log.d("mathLog","is game over? ${currentGame.isGameOver}")
+            Log.d("mathLog","Bonus on the line:...$bonusGainable")
             if(!currentGame.isGameOver) {
                 updateResults()
                 newTask()
@@ -142,7 +146,7 @@ class GameActivity : AppCompatActivity() {
             Toast.makeText(this@GameActivity, R.string.message_missing_result,Toast.LENGTH_SHORT)
                 .show()
         } else {
-            currentGame.evaluate(0)
+            currentGame.evaluateResponse(0,bonusGainable)
             Log.d("mathLog","is game over? ${currentGame.isGameOver}")
             if(!currentGame.isGameOver) {
                 updateResults()

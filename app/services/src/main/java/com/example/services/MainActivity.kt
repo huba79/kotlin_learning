@@ -1,16 +1,15 @@
 package com.example.services
 
 import android.content.Intent
-import android.nfc.tech.MifareClassic
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    lateinit var  startClassic:Button
-    lateinit var startJobIntent:Button
-    lateinit var stopClassic: Button
+    private lateinit var  startClassic:Button
+    private lateinit var startJobIntent:Button
+    private lateinit var stopClassic: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

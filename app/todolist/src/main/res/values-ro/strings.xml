@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Listele mele Todo</string>
+    <string name="add_item">Adaugă</string>
+    <string name="confirm_delete_title">Confirmă Ștergerea</string>
+    <string name="confirm_delete_question">Sigur dorești să ștergi această listă?</string>
+    <string name="confirm_delete_item_question">Sigur dorești să ștergi acest element?</string>
+    <string name="caption_yes">Șterge</string>
+    <string name="caption_nope">Anulează</string>
+    <string name="search_hint">Caută liste după titlu…</string>
+
+    <string name="filter_all">Toate</string>
+    <string name="filter_todo">De Făcut</string>
+    <string name="filter_in_progress">În Curs</string>
+    <string name="filter_done">Finalizat</string>
+
+    <string name="title_create_list">Creează Listă Nouă</string>
+    <string name="title_edit_list">Editează Lista</string>
+    <string name="hint_list_title">Titlul Listei</string>
+    <string name="hint_item_text">Descrierea noului element…</string>
+    <string name="label_status">Stare</string>
+    <string name="empty_lists">Nu s-au găsit liste conform filtrului</string>
+    <string name="empty_items">Nu există elemente în această listă. Adaugă unul mai sus!</string>
+
+    <string name="action_edit">Editează</string>
+    <string name="action_delete">Șterge</string>
+    <string name="save">Salvează</string>
+    <string name="cancel">Anulează</string>
+
+    <!-- Settings Strings -->
+    <string name="action_settings">Setări</string>
+    <string name="title_settings">Setări</string>
+    <string name="section_theme">Mod Temă</string>
+    <string name="theme_system">Implicit Sistem</string>
+    <string name="theme_light">Mod Luminos</string>
+    <string name="theme_dark">Mod Întunecat</string>
+
+    <string name="section_color_theme">Temă de Culori</string>
+    <string name="color_theme_default">Implicit (Violet)</string>
+    <string name="color_theme_ocean">Ocean (Albastru)</string>
+    <string name="color_theme_emerald">Smarald (Verde)</string>
+
+    <string name="section_language">Limbă</string>
+    <string name="lang_en">English (Engleză)</string>
+    <string name="lang_hu">Magyar (Maghiară)</string>
+    <string name="lang_ro">Română</string>
+</resources>

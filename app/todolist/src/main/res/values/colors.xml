@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="green_bg">#FF009688</color>
-    <color name="purple_bg">#FF6200EE</color>
-    <color name="blue_bg">#FF3700B3</color>
-    <color name="blue_fg">#FF3DB5EC</color>
-    <color name="light_bg">#F6F1FB</color>
-    <color name="black_fg">#FF444444</color>
-    <color name="white_fg">#FFEEEEEE</color>
+    <!-- Default / Purple theme colors -->
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+
+    <!-- Ocean theme colors -->
+    <color name="ocean_primary">#0288D1</color>
+    <color name="ocean_secondary">#00838F</color>
+
+    <!-- Emerald theme colors -->
+    <color name="emerald_primary">#2E7D32</color>
+    <color name="emerald_secondary">#4CAF50</color>
+
+    <!-- Status bar colors -->
+    <color name="status_bar_default">#6200EE</color>
+    <color name="status_bar_ocean">#0288D1</color>
+    <color name="status_bar_emerald">#2E7D32</color>
+
+    <!-- Backgrounds & Text -->
+    <color name="green_bg">#FF00BCD4</color>
+    <color name="purple_bg">#FFA272E6</color>
+    <color name="blue_bg">#FF458ABF</color>
+    <color name="blue_fg">#FF021953</color>
+    <color name="light_bg">#F5F5F5</color>
+    <color name="black_fg">#212121</color>
+    <color name="white_fg">#FFFFFF</color>
+
+    <!-- Statuses -->
+    <color name="status_todo">#1976D2</color>
+    <color name="status_todo_bg">#E3F2FD</color>
+    <color name="status_in_progress">#F57C00</color>
+    <color name="status_in_progress_bg">#FFF3E0</color>
+    <color name="status_done">#388E3C</color>
+    <color name="status_done_bg">#E8F5E9</color>
+
+    <color name="card_border">#E0E0E0</color>
 </resources>

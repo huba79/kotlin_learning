@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class recycler_activity : AppCompatActivity() {
+class RecycleActivity : AppCompatActivity() {
     private lateinit var usersRview:RecyclerView
     private lateinit var recyclerViewAdapter:UsersAdapter
 
@@ -13,8 +13,8 @@ class recycler_activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
         usersRview = findViewById(R.id.rView)
-        usersRview.layoutManager= LinearLayoutManager(this@recycler_activity)
-        recyclerViewAdapter = UsersAdapter(usersInit(),this@recycler_activity,findViewById(R.id.constraintLayoutId))
+        usersRview.layoutManager= LinearLayoutManager(this@RecycleActivity)
+        recyclerViewAdapter = UsersAdapter(usersInit(),this@RecycleActivity,findViewById(R.id.constraintLayoutId))
         usersRview.adapter = recyclerViewAdapter
     }
 

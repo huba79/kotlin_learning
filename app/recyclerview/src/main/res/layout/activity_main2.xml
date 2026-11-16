@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayoutId"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".recycler_activity">
+    tools:context=".RecycleActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rView"

@@ -1,11 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Bevásárlólista</string>
-    <string name="add_item">Hozzáad</string>
-    <string name="confirm_delete_question">Biztosan törölni szeretnéd ezt a tételt?</string>
-    <string name="caption_yes">Persze</string>
-    <string name="caption_nope">Nem hiszem</string>
+    <string name="app_name">Teendő Listáim</string>
+    <string name="add_item">Hozzáadás</string>
     <string name="confirm_delete_title">Biztos törölnéd?</string>
-    <string name="shopping_item_hint">Mit szeretne vásárolni?</string>
-    <string name="infoMessage">Hosszan nyomj rá egy elemre hogy törölhesd a listádból!</string>
+    <string name="confirm_delete_question">Biztosan törölni szeretnéd ezt a listát?</string>
+    <string name="confirm_delete_item_question">Biztosan törölni szeretnéd ezt a tételt?</string>
+    <string name="caption_yes">Törlés</string>
+    <string name="caption_nope">Mégse</string>
+    <string name="search_hint">Listák keresése cím alapján…</string>
+
+    <string name="filter_all">Mind</string>
+    <string name="filter_todo">Teendő</string>
+    <string name="filter_in_progress">Folyamatban</string>
+    <string name="filter_done">Kész</string>
+
+    <string name="title_create_list">Új Lista Létrehozása</string>
+    <string name="title_edit_list">Lista Szerkesztése</string>
+    <string name="hint_list_title">Lista Címe</string>
+    <string name="hint_item_text">Új elem leírása…</string>
+    <string name="label_status">Státusz</string>
+    <string name="empty_lists">Nem található lista a megadott szűrővel</string>
+    <string name="empty_items">Nincsenek elemek a listában. Adjon hozzá egyet fent!</string>
+
+    <string name="action_edit">Szerkesztés</string>
+    <string name="action_delete">Törlés</string>
+    <string name="save">Mentés</string>
+    <string name="cancel">Mégse</string>
+
+    <!-- Settings Strings -->
+    <string name="action_settings">Beállítások</string>
+    <string name="title_settings">Beállítások</string>
+    <string name="section_theme">Téma Mód</string>
+    <string name="theme_system">Rendszerbeállítás</string>
+    <string name="theme_light">Világos mód</string>
+    <string name="theme_dark">Sötét mód</string>
+
+    <string name="section_color_theme">Színtéma</string>
+    <string name="color_theme_default">Alapértelmezett (Lila)</string>
+    <string name="color_theme_ocean">Óceán (Kék)</string>
+    <string name="color_theme_emerald">Smaragd (Zöld)</string>
+
+    <string name="section_language">Nyelv</string>
+    <string name="lang_en">English (Angol)</string>
+    <string name="lang_hu">Magyar</string>
+    <string name="lang_ro">Română (Román)</string>
 </resources>

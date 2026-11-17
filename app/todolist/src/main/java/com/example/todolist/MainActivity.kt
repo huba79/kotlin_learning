@@ -287,13 +287,15 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.offset_24h)
         )
         val minutesValues = intArrayOf(15, 30, 60, 120, 360, 1440)
-        val checkedIndex = minutesValues.indexOf(currentOffset).takeIf { it >= 0 } ?: 2
+        var selectedIndex = minutesValues.indexOf(currentOffset).takeIf { it >= 0 } ?: 2
 
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.title_notification_settings)
-            .setSingleChoiceItems(items, checkedIndex) { dialog, which ->
-                PreferencesManager.saveNotificationOffsetMinutes(this, minutesValues[which])
-                dialog.dismiss()
+            .setSingleChoiceItems(items, selectedIndex) { _, which ->
+                selectedIndex = which
+            }
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                PreferencesManager.saveNotificationOffsetMinutes(this, minutesValues[selectedIndex])
             }
             .setNegativeButton(R.string.cancel, null)
             .show()
@@ -310,15 +312,17 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.offset_24h)
         )
         val minutesValues = intArrayOf(15, 30, 60, 120, 360, 1440)
-        val checkedIndex = minutesValues.indexOf(currentOffset).takeIf { it >= 0 } ?: 2
+        var selectedIndex = minutesValues.indexOf(currentOffset).takeIf { it >= 0 } ?: 2
 
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.title_notification_settings)
-            .setSingleChoiceItems(items, checkedIndex) { dialog, which ->
+            .setSingleChoiceItems(items, selectedIndex) { _, which ->
+                selectedIndex = which
+            }
+            .setPositiveButton(android.R.string.ok) { _, _ ->
                 lifecycleScope.launch {
-                    repository.updateNotificationOffset(list, minutesValues[which])
+                    repository.updateNotificationOffset(list, minutesValues[selectedIndex])
                 }
-                dialog.dismiss()
             }
             .setNegativeButton(R.string.cancel, null)
             .show()

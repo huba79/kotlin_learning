@@ -58,48 +58,61 @@
                 app:tint="?attr/colorOnSurfaceVariant" />
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/textProgress"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:textSize="13sp"
-            tools:text="2 of 5 items completed" />
-
-        <LinearLayout
-            android:id="@+id/layoutDeadline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="4dp"
-                android:contentDescription="@string/label_deadline"
-                android:src="@android:drawable/ic_menu_today"
-                app:tint="?attr/colorOnSurfaceVariant" />
+            android:layout_marginTop="8dp">
 
             <TextView
-                android:id="@+id/textDeadline"
+                android:id="@+id/textProgress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/layoutDeadline"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="?attr/colorOnSurfaceVariant"
                 android:textSize="13sp"
-                tools:text="Due: Nov 17, 2026, 22:30" />
-        </LinearLayout>
+                tools:text="2 of 5 items completed" />
+
+            <LinearLayout
+                android:id="@+id/layoutDeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="4dp">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="4dp"
+                    android:contentDescription="@string/label_deadline"
+                    android:src="@android:drawable/ic_menu_today"
+                    app:tint="?attr/colorOnSurfaceVariant" />
+
+                <TextView
+                    android:id="@+id/textDeadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="13sp"
+                    tools:text="Due: Nov 17, 2026, 22:30" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progressIndicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="8dp"
             app:trackCornerRadius="4dp"
             tools:progress="40" />
     </LinearLayout>

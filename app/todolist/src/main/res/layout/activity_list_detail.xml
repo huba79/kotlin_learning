@@ -99,16 +99,19 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:textColor="?attr/colorOnSurface"
-                        android:textSize="14sp"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
                         tools:text="Due: Nov 17, 2026, 22:30" />
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnEditDeadline"
-                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    style="@style/Widget.Material3.Button.OutlinedButton.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/action_change_deadline" />
+                    android:layout_marginStart="8dp"
+                    android:text="@string/action_edit"
+                    app:icon="@android:drawable/ic_menu_edit" />
             </LinearLayout>
 
         </LinearLayout>

@@ -63,11 +63,6 @@ class TodoListRepository(private val dao: TodoListDao) {
         }
     }
 
-    suspend fun updateListTitle(list: TodoListEntity, newTitle: String) {
-        val updatedList = list.copy(title = newTitle)
-        dao.updateList(updatedList)
-    }
-
     suspend fun deleteList(list: TodoListEntity) {
         dao.deleteList(list)
     }

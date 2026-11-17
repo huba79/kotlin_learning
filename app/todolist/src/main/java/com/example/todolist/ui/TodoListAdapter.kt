@@ -20,7 +20,7 @@ class TodoListAdapter(
     private val onEditClick: (TodoListEntity) -> Unit,
     private val onDeadlineClick: (TodoListEntity) -> Unit,
     private val onNotificationSettingsClick: (TodoListEntity) -> Unit,
-    private val onDeleteClick: (TodoListEntity) -> Unit
+    private val onDeleteClick: (TodoListEntity) -> Unit,
 ) : RecyclerView.Adapter<TodoListAdapter.ListViewHolder>() {
 
     private var lists: List<TodoListWithItems> = emptyList()
@@ -31,7 +31,7 @@ class TodoListAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ListViewHolder(val binding: ItemTodoListCardBinding) :
+    class ListViewHolder(val binding: ItemTodoListCardBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -44,9 +44,7 @@ class TodoListAdapter(
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val itemWithItems = lists[position]
-        val list = itemWithItems.list
-        val items = itemWithItems.items
+        val (list, items) = lists[position]
         val binding = holder.binding
 
         binding.textListTitle.text = list.title

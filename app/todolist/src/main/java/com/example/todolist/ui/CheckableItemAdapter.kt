@@ -10,7 +10,7 @@ import com.example.todolist.databinding.ItemTodoCheckItemBinding
 
 class CheckableItemAdapter(
     private val onItemCheckChanged: (TodoItemEntity, Boolean) -> Unit,
-    private val onItemDeleteClick: (TodoItemEntity) -> Unit
+    private val onItemDeleteClick: (TodoItemEntity) -> Unit,
 ) : RecyclerView.Adapter<CheckableItemAdapter.ItemViewHolder>() {
 
     private var items: List<TodoItemEntity> = emptyList()

@@ -12,7 +12,7 @@ class Converters {
     fun toListStatus(status: String): ListStatus {
         return try {
             ListStatus.valueOf(status)
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             ListStatus.TODO
         }
     }

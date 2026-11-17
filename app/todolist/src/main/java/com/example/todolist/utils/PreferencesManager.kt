@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.LocaleListCompat
 import androidx.core.view.WindowCompat
 import com.example.todolist.R
+import androidx.core.content.edit
 
 object PreferencesManager {
 
@@ -28,7 +29,7 @@ object PreferencesManager {
     }
 
     fun saveNotificationOffsetMinutes(context: Context, minutes: Int) {
-        getPrefs(context).edit().putInt(KEY_NOTIFICATION_OFFSET, minutes).apply()
+        getPrefs(context).edit { putInt(KEY_NOTIFICATION_OFFSET, minutes) }
     }
 
     fun getThemeMode(context: Context): Int {
@@ -36,7 +37,7 @@ object PreferencesManager {
     }
 
     fun saveThemeMode(context: Context, mode: Int) {
-        getPrefs(context).edit().putInt(KEY_THEME_MODE, mode).apply()
+        getPrefs(context).edit { putInt(KEY_THEME_MODE, mode) }
         AppCompatDelegate.setDefaultNightMode(mode)
     }
 
@@ -45,7 +46,7 @@ object PreferencesManager {
     }
 
     fun saveColorTheme(context: Context, themeKey: String) {
-        getPrefs(context).edit().putString(KEY_COLOR_THEME, themeKey).apply()
+        getPrefs(context).edit { putString(KEY_COLOR_THEME, themeKey) }
     }
 
     fun applyColorTheme(activity: Activity) {
@@ -82,7 +83,7 @@ object PreferencesManager {
     }
 
     fun saveLanguageTag(context: Context, languageTag: String) {
-        getPrefs(context).edit().putString(KEY_LANGUAGE, languageTag).apply()
+        getPrefs(context).edit { putString(KEY_LANGUAGE, languageTag) }
         val appLocales = LocaleListCompat.forLanguageTags(languageTag)
         AppCompatDelegate.setApplicationLocales(appLocales)
     }

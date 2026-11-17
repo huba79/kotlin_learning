@@ -287,7 +287,7 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.offset_24h)
         )
         val minutesValues = intArrayOf(15, 30, 60, 120, 360, 1440)
-        val checkedIndex = minutesValues.indexOf(currentOffset).coerceAtLeast(2)
+        val checkedIndex = minutesValues.indexOf(currentOffset).takeIf { it >= 0 } ?: 2
 
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.title_notification_settings)
@@ -310,7 +310,7 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.offset_24h)
         )
         val minutesValues = intArrayOf(15, 30, 60, 120, 360, 1440)
-        val checkedIndex = minutesValues.indexOf(currentOffset).coerceAtLeast(2)
+        val checkedIndex = minutesValues.indexOf(currentOffset).takeIf { it >= 0 } ?: 2
 
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.title_notification_settings)

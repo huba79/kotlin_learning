@@ -30,6 +30,14 @@
     <!-- Settings Strings -->
     <string name="action_settings">Beállítások</string>
     <string name="title_settings">Beállítások</string>
+    <string name="action_notification_settings">Értesítési beállítások</string>
+    <string name="title_notification_settings">Értesítési időpont beállítása</string>
+    <string name="offset_15m">15 perccel előtte</string>
+    <string name="offset_30m">30 perccel előtte</string>
+    <string name="offset_1h">1 órával előtte</string>
+    <string name="offset_2h">2 órával előtte</string>
+    <string name="offset_6h">6 órával előtte</string>
+    <string name="offset_24h">24 órával előtte</string>
     <string name="section_theme">Téma Mód</string>
     <string name="theme_system">Rendszerbeállítás</string>
     <string name="theme_light">Világos mód</string>
@@ -44,4 +52,6 @@
     <string name="lang_en">English (Angol)</string>
     <string name="lang_hu">Magyar</string>
     <string name="lang_ro">Română (Román)</string>
+
+    <string name="due_date_format">Határidő: %s</string>
 </resources>

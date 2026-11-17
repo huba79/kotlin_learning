@@ -30,6 +30,14 @@
     <!-- Settings Strings -->
     <string name="action_settings">Setări</string>
     <string name="title_settings">Setări</string>
+    <string name="action_notification_settings">Setări notificări</string>
+    <string name="title_notification_settings">Configurare timp notificare</string>
+    <string name="offset_15m">Cu 15 minute înainte</string>
+    <string name="offset_30m">Cu 30 minute înainte</string>
+    <string name="offset_1h">Cu 1 oră înainte</string>
+    <string name="offset_2h">Cu 2 ore înainte</string>
+    <string name="offset_6h">Cu 6 ore înainte</string>
+    <string name="offset_24h">Cu 24 ore înainte</string>
     <string name="section_theme">Mod Temă</string>
     <string name="theme_system">Implicit Sistem</string>
     <string name="theme_light">Mod Luminos</string>
@@ -44,4 +52,6 @@
     <string name="lang_en">English (Engleză)</string>
     <string name="lang_hu">Magyar (Maghiară)</string>
     <string name="lang_ro">Română</string>
+
+    <string name="due_date_format">Scadență: %s</string>
 </resources>

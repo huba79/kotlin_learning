@@ -82,6 +82,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.action_notification_settings -> {
+                showGlobalNotificationSettingsDialog()
+                true
+            }
             R.id.action_settings -> {
                 startActivity(Intent(this, SettingsActivity::class.java))
                 true
@@ -101,6 +105,9 @@ class MainActivity : AppCompatActivity() {
             },
             onEditClick = { list ->
                 showAddEditListDialog(listToEdit = list)
+            },
+            onNotificationSettingsClick = { list ->
+                showPerListNotificationSettingsDialog(list)
             },
             onDeleteClick = { list ->
                 showDeleteConfirmationDialog(list)
@@ -156,6 +163,40 @@ class MainActivity : AppCompatActivity() {
 
     private fun showAddEditListDialog(listToEdit: TodoListEntity?) {
         val dialogBinding = DialogAddEditListBinding.inflate(LayoutInflater.from(this))
+        var selectedDeadline: Long = listToEdit?.deadline ?: (System.currentTimeMillis() + 24 * 60 * 60 * 1000L)
+        val globalOffset = PreferencesManager.getNotificationOffsetMinutes(this)
+        val selectedOffset: Int = listToEdit?.notificationOffsetMinutes ?: globalOffset
+
+        val dateFormat = java.text.SimpleDateFormat("MMM dd, yyyy HH:mm", java.util.Locale.getDefault())
+
+        fun updateDeadlineButtonText() {
+            dialogBinding.btnSelectDeadline.text = getString(R.string.due_date_format, dateFormat.format(java.util.Date(selectedDeadline)))
+        }
+
+        updateDeadlineButtonText()
+
+        dialogBinding.btnSelectDeadline.setOnClickListener {
+            val calendar = java.util.Calendar.getInstance().apply { timeInMillis = selectedDeadline }
+            android.app.DatePickerDialog(
+                this,
+                { _, year, month, dayOfMonth ->
+                    android.app.TimePickerDialog(
+                        this,
+                        { _, hourOfDay, minute ->
+                            calendar.set(year, month, dayOfMonth, hourOfDay, minute)
+                            selectedDeadline = calendar.timeInMillis
+                            updateDeadlineButtonText()
+                        },
+                        calendar.get(java.util.Calendar.HOUR_OF_DAY),
+                        calendar.get(java.util.Calendar.MINUTE),
+                        true
+                    ).show()
+                },
+                calendar.get(java.util.Calendar.YEAR),
+                calendar.get(java.util.Calendar.MONTH),
+                calendar.get(java.util.Calendar.DAY_OF_MONTH)
+            ).show()
+        }
 
         if (listToEdit != null) {
             dialogBinding.editListTitle.setText(listToEdit.title)
@@ -194,10 +235,9 @@ class MainActivity : AppCompatActivity() {
 
                 lifecycleScope.launch {
                     if (listToEdit == null) {
-                        repository.insertList(inputTitle, selectedStatus)
+                        repository.insertList(inputTitle, selectedStatus, selectedDeadline, selectedOffset)
                     } else {
-                        repository.updateListTitle(listToEdit, inputTitle)
-                        repository.updateListStatus(listToEdit, selectedStatus)
+                        repository.updateListDetails(listToEdit, inputTitle, selectedStatus, selectedDeadline)
                     }
                     dialog.dismiss()
                 }
@@ -205,6 +245,54 @@ class MainActivity : AppCompatActivity() {
         }
 
         dialog.show()
+    }
+
+    private fun showGlobalNotificationSettingsDialog() {
+        val currentOffset = PreferencesManager.getNotificationOffsetMinutes(this)
+        val items = arrayOf(
+            getString(R.string.offset_15m),
+            getString(R.string.offset_30m),
+            getString(R.string.offset_1h),
+            getString(R.string.offset_2h),
+            getString(R.string.offset_6h),
+            getString(R.string.offset_24h)
+        )
+        val minutesValues = intArrayOf(15, 30, 60, 120, 360, 1440)
+        val checkedIndex = minutesValues.indexOf(currentOffset).coerceAtLeast(2)
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.title_notification_settings)
+            .setSingleChoiceItems(items, checkedIndex) { dialog, which ->
+                PreferencesManager.saveNotificationOffsetMinutes(this, minutesValues[which])
+                dialog.dismiss()
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
+    }
+
+    private fun showPerListNotificationSettingsDialog(list: TodoListEntity) {
+        val currentOffset = list.notificationOffsetMinutes
+        val items = arrayOf(
+            getString(R.string.offset_15m),
+            getString(R.string.offset_30m),
+            getString(R.string.offset_1h),
+            getString(R.string.offset_2h),
+            getString(R.string.offset_6h),
+            getString(R.string.offset_24h)
+        )
+        val minutesValues = intArrayOf(15, 30, 60, 120, 360, 1440)
+        val checkedIndex = minutesValues.indexOf(currentOffset).coerceAtLeast(2)
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.title_notification_settings)
+            .setSingleChoiceItems(items, checkedIndex) { dialog, which ->
+                lifecycleScope.launch {
+                    repository.updateNotificationOffset(list, minutesValues[which])
+                }
+                dialog.dismiss()
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
     }
 
     private fun showDeleteConfirmationDialog(list: TodoListEntity) {

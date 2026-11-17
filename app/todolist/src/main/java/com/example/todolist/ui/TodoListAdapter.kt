@@ -18,6 +18,7 @@ class TodoListAdapter(
     private val context: Context,
     private val onListClick: (Long) -> Unit,
     private val onEditClick: (TodoListEntity) -> Unit,
+    private val onNotificationSettingsClick: (TodoListEntity) -> Unit,
     private val onDeleteClick: (TodoListEntity) -> Unit
 ) : RecyclerView.Adapter<TodoListAdapter.ListViewHolder>() {
 
@@ -89,6 +90,9 @@ class TodoListAdapter(
             "$doneCount of $totalCount items completed"
         }
 
+        val dateFormat = java.text.SimpleDateFormat("MMM dd, yyyy HH:mm", java.util.Locale.getDefault())
+        binding.textDeadline.text = context.getString(R.string.due_date_format, dateFormat.format(java.util.Date(list.deadline)))
+
         val progressPercent = if (totalCount == 0) 0 else (doneCount * 100) / totalCount
         binding.progressIndicator.progress = progressPercent
 
@@ -100,11 +104,16 @@ class TodoListAdapter(
         binding.btnMenu.setOnClickListener { view ->
             val popup = PopupMenu(context, view)
             popup.menu.add(R.string.action_edit)
+            popup.menu.add(R.string.action_notification_settings)
             popup.menu.add(R.string.action_delete)
             popup.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.title) {
                     context.getString(R.string.action_edit) -> {
                         onEditClick(list)
+                        true
+                    }
+                    context.getString(R.string.action_notification_settings) -> {
+                        onNotificationSettingsClick(list)
                         true
                     }
                     context.getString(R.string.action_delete) -> {

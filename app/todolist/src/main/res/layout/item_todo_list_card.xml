@@ -67,6 +67,15 @@
             android:textSize="13sp"
             tools:text="2 of 5 items completed" />
 
+        <TextView
+            android:id="@+id/textDeadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="13sp"
+            tools:text="Due: Nov 17, 2026, 22:30" />
+
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progressIndicator"
             android:layout_width="match_parent"

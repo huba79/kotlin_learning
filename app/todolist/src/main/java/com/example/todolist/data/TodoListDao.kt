@@ -41,6 +41,9 @@ interface TodoListDao {
     @Query("UPDATE todo_lists SET status = :status WHERE id = :listId")
     suspend fun updateListStatusField(listId: Long, status: ListStatus)
 
+    @Query("UPDATE todo_lists SET notificationOffsetMinutes = :offset WHERE id = :listId")
+    suspend fun updateNotificationOffset(listId: Long, offset: Int)
+
     @Transaction
     @Query("SELECT * FROM todo_lists WHERE id = :listId")
     suspend fun getListWithItemsByIdSync(listId: Long): TodoListWithItems?

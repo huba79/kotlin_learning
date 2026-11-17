@@ -8,5 +8,7 @@ data class TodoListEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val title: String,
-    val status: ListStatus = ListStatus.TODO
+    val status: ListStatus = ListStatus.TODO,
+    val deadline: Long = System.currentTimeMillis() + 24 * 60 * 60 * 1000L,
+    val notificationOffsetMinutes: Int = 60
 )

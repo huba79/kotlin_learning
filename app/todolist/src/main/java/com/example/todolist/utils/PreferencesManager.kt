@@ -14,6 +14,7 @@ object PreferencesManager {
     private const val KEY_THEME_MODE = "key_theme_mode"
     private const val KEY_COLOR_THEME = "key_color_theme"
     private const val KEY_LANGUAGE = "key_language"
+    private const val KEY_NOTIFICATION_OFFSET = "key_notification_offset_minutes"
 
     const val COLOR_THEME_DEFAULT = "default"
     const val COLOR_THEME_OCEAN = "ocean"
@@ -21,6 +22,14 @@ object PreferencesManager {
 
     private fun getPrefs(context: Context) =
         context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+
+    fun getNotificationOffsetMinutes(context: Context): Int {
+        return getPrefs(context).getInt(KEY_NOTIFICATION_OFFSET, 60)
+    }
+
+    fun saveNotificationOffsetMinutes(context: Context, minutes: Int) {
+        getPrefs(context).edit().putInt(KEY_NOTIFICATION_OFFSET, minutes).apply()
+    }
 
     fun getThemeMode(context: Context): Int {
         return getPrefs(context).getInt(KEY_THEME_MODE, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)

@@ -16,9 +16,30 @@ class TodoListRepository(private val dao: TodoListDao) {
         return dao.getListWithItemsById(listId)
     }
 
-    suspend fun insertList(title: String, status: ListStatus = ListStatus.TODO): Long {
-        val list = TodoListEntity(title = title, status = status)
+    suspend fun insertList(
+        title: String,
+        status: ListStatus = ListStatus.TODO,
+        deadline: Long = System.currentTimeMillis() + 24 * 60 * 60 * 1000L,
+        notificationOffsetMinutes: Int = 60
+    ): Long {
+        val list = TodoListEntity(
+            title = title,
+            status = status,
+            deadline = deadline,
+            notificationOffsetMinutes = notificationOffsetMinutes
+        )
         return dao.insertList(list)
+    }
+
+    suspend fun updateListDetails(list: TodoListEntity, newTitle: String, newStatus: ListStatus, newDeadline: Long) {
+        val updatedList = list.copy(title = newTitle, deadline = newDeadline)
+        dao.updateList(updatedList)
+        updateListStatus(updatedList, newStatus)
+    }
+
+    suspend fun updateNotificationOffset(list: TodoListEntity, offsetMinutes: Int) {
+        val updated = list.copy(notificationOffsetMinutes = offsetMinutes)
+        dao.updateList(updated)
     }
 
     suspend fun updateListStatus(list: TodoListEntity, newStatus: ListStatus) {

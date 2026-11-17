@@ -19,6 +19,8 @@
     <string name="hint_list_title">Lista Címe</string>
     <string name="hint_item_text">Új elem leírása…</string>
     <string name="label_status">Státusz</string>
+    <string name="label_deadline">Határidő</string>
+    <string name="action_change_deadline">Határidő módosítása / elhalasztása</string>
     <string name="empty_lists">Nem található lista a megadott szűrővel</string>
     <string name="empty_items">Nincsenek elemek a listában. Adjon hozzá egyet fent!</string>
 

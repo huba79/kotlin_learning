@@ -18,6 +18,7 @@ class TodoListAdapter(
     private val context: Context,
     private val onListClick: (Long) -> Unit,
     private val onEditClick: (TodoListEntity) -> Unit,
+    private val onDeadlineClick: (TodoListEntity) -> Unit,
     private val onNotificationSettingsClick: (TodoListEntity) -> Unit,
     private val onDeleteClick: (TodoListEntity) -> Unit
 ) : RecyclerView.Adapter<TodoListAdapter.ListViewHolder>() {
@@ -101,15 +102,24 @@ class TodoListAdapter(
             onListClick(list.id)
         }
 
+        binding.layoutDeadline.setOnClickListener {
+            onDeadlineClick(list)
+        }
+
         binding.btnMenu.setOnClickListener { view ->
             val popup = PopupMenu(context, view)
             popup.menu.add(R.string.action_edit)
+            popup.menu.add(R.string.action_change_deadline)
             popup.menu.add(R.string.action_notification_settings)
             popup.menu.add(R.string.action_delete)
             popup.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.title) {
                     context.getString(R.string.action_edit) -> {
                         onEditClick(list)
+                        true
+                    }
+                    context.getString(R.string.action_change_deadline) -> {
+                        onDeadlineClick(list)
                         true
                     }
                     context.getString(R.string.action_notification_settings) -> {

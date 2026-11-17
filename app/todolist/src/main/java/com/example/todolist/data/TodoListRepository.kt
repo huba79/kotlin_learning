@@ -37,6 +37,11 @@ class TodoListRepository(private val dao: TodoListDao) {
         updateListStatus(updatedList, newStatus)
     }
 
+    suspend fun updateListDeadline(list: TodoListEntity, newDeadline: Long) {
+        val updatedList = list.copy(deadline = newDeadline)
+        dao.updateList(updatedList)
+    }
+
     suspend fun updateNotificationOffset(list: TodoListEntity, offsetMinutes: Int) {
         val updated = list.copy(notificationOffsetMinutes = offsetMinutes)
         dao.updateList(updated)

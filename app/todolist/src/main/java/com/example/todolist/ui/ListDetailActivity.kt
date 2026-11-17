@@ -51,6 +51,7 @@ class ListDetailActivity : AppCompatActivity() {
         setupRecyclerView()
         setupAddItem()
         setupStatusChips()
+        setupDeadlineEdit()
         observeData()
     }
 
@@ -110,6 +111,41 @@ class ListDetailActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupDeadlineEdit() {
+        val clickListener = View.OnClickListener {
+            showDatePickerDialog()
+        }
+        binding.btnEditDeadline.setOnClickListener(clickListener)
+        binding.textDetailDeadline.setOnClickListener(clickListener)
+    }
+
+    private fun showDatePickerDialog() {
+        val list = currentListEntity ?: return
+        val calendar = java.util.Calendar.getInstance().apply { timeInMillis = list.deadline }
+
+        android.app.DatePickerDialog(
+            this,
+            { _, year, month, dayOfMonth ->
+                android.app.TimePickerDialog(
+                    this,
+                    { _, hourOfDay, minute ->
+                        calendar.set(year, month, dayOfMonth, hourOfDay, minute)
+                        val newDeadline = calendar.timeInMillis
+                        lifecycleScope.launch {
+                            repository.updateListDeadline(list, newDeadline)
+                        }
+                    },
+                    calendar.get(java.util.Calendar.HOUR_OF_DAY),
+                    calendar.get(java.util.Calendar.MINUTE),
+                    true
+                ).show()
+            },
+            calendar.get(java.util.Calendar.YEAR),
+            calendar.get(java.util.Calendar.MONTH),
+            calendar.get(java.util.Calendar.DAY_OF_MONTH)
+        ).show()
+    }
+
     private fun observeData() {
         lifecycleScope.launch {
             repository.getListById(listId).collectLatest { listWithItems ->
@@ -129,6 +165,10 @@ class ListDetailActivity : AppCompatActivity() {
                     ListStatus.DONE -> binding.chipGroupStatus.check(R.id.chipStatusDone)
                 }
                 isSettingStatusFromCode = false
+
+                // Update deadline display
+                val dateFormat = java.text.SimpleDateFormat("MMM dd, yyyy HH:mm", java.util.Locale.getDefault())
+                binding.textDetailDeadline.text = getString(R.string.due_date_format, dateFormat.format(java.util.Date(listWithItems.list.deadline)))
 
                 // Update items list
                 itemAdapter.submitList(listWithItems.items)

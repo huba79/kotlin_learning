@@ -106,6 +106,9 @@ class MainActivity : AppCompatActivity() {
             onEditClick = { list ->
                 showAddEditListDialog(listToEdit = list)
             },
+            onDeadlineClick = { list ->
+                showDatePickerDialogForList(list)
+            },
             onNotificationSettingsClick = { list ->
                 showPerListNotificationSettingsDialog(list)
             },
@@ -116,6 +119,32 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerViewLists.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewLists.adapter = adapter
+    }
+
+    private fun showDatePickerDialogForList(list: TodoListEntity) {
+        val calendar = java.util.Calendar.getInstance().apply { timeInMillis = list.deadline }
+
+        android.app.DatePickerDialog(
+            this,
+            { _, year, month, dayOfMonth ->
+                android.app.TimePickerDialog(
+                    this,
+                    { _, hourOfDay, minute ->
+                        calendar.set(year, month, dayOfMonth, hourOfDay, minute)
+                        val newDeadline = calendar.timeInMillis
+                        lifecycleScope.launch {
+                            repository.updateListDeadline(list, newDeadline)
+                        }
+                    },
+                    calendar.get(java.util.Calendar.HOUR_OF_DAY),
+                    calendar.get(java.util.Calendar.MINUTE),
+                    true
+                ).show()
+            },
+            calendar.get(java.util.Calendar.YEAR),
+            calendar.get(java.util.Calendar.MONTH),
+            calendar.get(java.util.Calendar.DAY_OF_MONTH)
+        ).show()
     }
 
     private fun setupSearchAndFilter() {

@@ -129,56 +129,29 @@ class MainActivity : AppCompatActivity() {
             onEditClick = { list ->
                 showAddEditListDialog(listToEdit = list)
             },
-            onDeadlineClick = { list ->
-                showDatePickerDialogForList(list)
-            },
             onNotificationSettingsClick = { list ->
                 showPerListNotificationSettingsDialog(list)
             },
-            onDeleteClick = { list ->
-                showDeleteConfirmationDialog(list)
-            }
-        )
+        ) { list ->
+            // onDeleteClick
+            showDeleteConfirmationDialog(list)
+        }
 
         binding.recyclerViewLists.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewLists.adapter = adapter
     }
 
-    private fun showDatePickerDialogForList(list: TodoListEntity) {
-        val calendar = java.util.Calendar.getInstance().apply { timeInMillis = list.deadline }
-
-        android.app.DatePickerDialog(
-            this,
-            { _, year, month, dayOfMonth ->
-                android.app.TimePickerDialog(
-                    this,
-                    { _, hourOfDay, minute ->
-                        calendar.set(year, month, dayOfMonth, hourOfDay, minute)
-                        val newDeadline = calendar.timeInMillis
-                        lifecycleScope.launch {
-                            repository.updateListDeadline(list, newDeadline)
-                        }
-                    },
-                    calendar.get(java.util.Calendar.HOUR_OF_DAY),
-                    calendar.get(java.util.Calendar.MINUTE),
-                    true
-                ).show()
-            },
-            calendar.get(java.util.Calendar.YEAR),
-            calendar.get(java.util.Calendar.MONTH),
-            calendar.get(java.util.Calendar.DAY_OF_MONTH)
-        ).show()
-    }
-
     private fun setupSearchAndFilter() {
-        binding.editSearchQuery.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                currentSearchQuery = s?.toString()?.trim() ?: ""
-                loadData()
-            }
-            override fun afterTextChanged(s: Editable?) {}
-        })
+        binding.editSearchQuery.addTextChangedListener(
+            object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    currentSearchQuery = s?.toString()?.trim() ?: ""
+                    loadData()
+                }
+                override fun afterTextChanged(s: Editable?) {}
+            },
+        )
 
         binding.chipGroupFilter.setOnCheckedStateChangeListener { _, checkedIds ->
             currentFilterStatus = when {
@@ -208,7 +181,7 @@ class MainActivity : AppCompatActivity() {
                     binding.textEmptyState.visibility = View.GONE
                     binding.recyclerViewLists.visibility = View.VISIBLE
                 }
-                if (!hasSyncedInitialReminders && currentSearchQuery.isEmpty() && currentFilterStatus == null) {
+                if ((!hasSyncedInitialReminders) && currentSearchQuery.isEmpty() && (currentFilterStatus == null)) {
                     hasSyncedInitialReminders = true
                     lists.forEach { (list, _) -> deadlineScheduler.syncIfNeeded(list) }
                 }
@@ -219,7 +192,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showAddEditListDialog(listToEdit: TodoListEntity?) {
         val dialogBinding = DialogAddEditListBinding.inflate(LayoutInflater.from(this))
-        var selectedDeadline: Long = listToEdit?.deadline ?: (System.currentTimeMillis() + 24 * 60 * 60 * 1000L)
+        var selectedDeadline: Long = listToEdit?.deadline ?: (System.currentTimeMillis() + (24 * 60 * 60 * 1000L))
         val globalOffset = PreferencesManager.getNotificationOffsetMinutes(this)
         val selectedOffset: Int = listToEdit?.notificationOffsetMinutes ?: globalOffset
 
@@ -239,18 +212,22 @@ class MainActivity : AppCompatActivity() {
                     android.app.TimePickerDialog(
                         this,
                         { _, hourOfDay, minute ->
-                            calendar.set(year, month, dayOfMonth, hourOfDay, minute)
+                            calendar[java.util.Calendar.YEAR] = year
+                            calendar[java.util.Calendar.MONTH] = month
+                            calendar[java.util.Calendar.DAY_OF_MONTH] = dayOfMonth
+                            calendar[java.util.Calendar.HOUR_OF_DAY] = hourOfDay
+                            calendar[java.util.Calendar.MINUTE] = minute
                             selectedDeadline = calendar.timeInMillis
                             updateDeadlineButtonText()
                         },
-                        calendar.get(java.util.Calendar.HOUR_OF_DAY),
-                        calendar.get(java.util.Calendar.MINUTE),
-                        true
+                        calendar[java.util.Calendar.HOUR_OF_DAY],
+                        calendar[java.util.Calendar.MINUTE],
+                        true,
                     ).show()
                 },
-                calendar.get(java.util.Calendar.YEAR),
-                calendar.get(java.util.Calendar.MONTH),
-                calendar.get(java.util.Calendar.DAY_OF_MONTH)
+                calendar[java.util.Calendar.YEAR],
+                calendar[java.util.Calendar.MONTH],
+                calendar[java.util.Calendar.DAY_OF_MONTH],
             ).show()
         }
 
@@ -311,7 +288,7 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.offset_1h),
             getString(R.string.offset_2h),
             getString(R.string.offset_6h),
-            getString(R.string.offset_24h)
+            getString(R.string.offset_24h),
         )
         val minutesValues = intArrayOf(15, 30, 60, 120, 360, 1440)
         var selectedIndex = minutesValues.indexOf(currentOffset).takeIf { it >= 0 } ?: 2
@@ -336,7 +313,7 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.offset_1h),
             getString(R.string.offset_2h),
             getString(R.string.offset_6h),
-            getString(R.string.offset_24h)
+            getString(R.string.offset_24h),
         )
         val minutesValues = intArrayOf(15, 30, 60, 120, 360, 1440)
         var selectedIndex = minutesValues.indexOf(currentOffset).takeIf { it >= 0 } ?: 2

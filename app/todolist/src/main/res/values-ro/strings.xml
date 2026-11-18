@@ -20,7 +20,6 @@
     <string name="hint_item_text">Descrierea noului element…</string>
     <string name="label_status">Stare</string>
     <string name="label_deadline">Termen limită</string>
-    <string name="action_change_deadline">Modifică / Amână termenul limită</string>
     <string name="empty_lists">Nu s-au găsit liste conform filtrului</string>
     <string name="empty_items">Nu există elemente în această listă. Adaugă unul mai sus!</string>
 

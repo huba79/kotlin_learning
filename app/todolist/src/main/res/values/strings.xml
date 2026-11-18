@@ -20,7 +20,6 @@
     <string name="hint_item_text">New item description…</string>
     <string name="label_status">Status</string>
     <string name="label_deadline">Deadline</string>
-    <string name="action_change_deadline">Postpone / Edit Deadline</string>
     <string name="empty_lists">No lists found matching your filter</string>
     <string name="empty_items">No items in this list. Add one above!</string>
 

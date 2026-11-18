@@ -82,13 +82,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingHorizontal="6dp"
-                android:paddingVertical="4dp">
+                android:paddingVertical="4dp"
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="16dp"
@@ -112,8 +110,9 @@
             android:id="@+id/progressIndicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:trackCornerRadius="4dp"
+            android:layout_marginTop="12dp"
+            app:trackCornerRadius="3dp"
+            app:trackThickness="6dp"
             tools:progress="40" />
     </LinearLayout>
 

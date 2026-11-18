@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
 import com.example.todolist.data.ListStatus
+import com.example.todolist.data.TodoItemEntity
 import com.example.todolist.data.TodoListEntity
 import com.example.todolist.data.TodoListWithItems
 import com.example.todolist.databinding.ItemTodoListCardBinding
@@ -18,7 +19,6 @@ class TodoListAdapter(
     private val context: Context,
     private val onListClick: (Long) -> Unit,
     private val onEditClick: (TodoListEntity) -> Unit,
-    private val onDeadlineClick: (TodoListEntity) -> Unit,
     private val onNotificationSettingsClick: (TodoListEntity) -> Unit,
     private val onDeleteClick: (TodoListEntity) -> Unit,
 ) : RecyclerView.Adapter<TodoListAdapter.ListViewHolder>() {
@@ -38,7 +38,7 @@ class TodoListAdapter(
         val binding = ItemTodoListCardBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
-            false
+            false,
         )
         return ListViewHolder(binding)
     }
@@ -54,35 +54,35 @@ class TodoListAdapter(
             ListStatus.TODO -> {
                 binding.chipStatus.text = context.getString(R.string.filter_todo)
                 binding.chipStatus.backgroundTintList = ColorStateList.valueOf(
-                    ContextCompat.getColor(context, R.color.status_todo_bg)
+                    ContextCompat.getColor(context, R.color.status_todo_bg),
                 )
                 binding.chipStatus.setTextColor(
-                    ContextCompat.getColor(context, R.color.status_todo)
+                    ContextCompat.getColor(context, R.color.status_todo),
                 )
             }
             ListStatus.IN_PROGRESS -> {
                 binding.chipStatus.text = context.getString(R.string.filter_in_progress)
                 binding.chipStatus.backgroundTintList = ColorStateList.valueOf(
-                    ContextCompat.getColor(context, R.color.status_in_progress_bg)
+                    ContextCompat.getColor(context, R.color.status_in_progress_bg),
                 )
                 binding.chipStatus.setTextColor(
-                    ContextCompat.getColor(context, R.color.status_in_progress)
+                    ContextCompat.getColor(context, R.color.status_in_progress),
                 )
             }
             ListStatus.DONE -> {
                 binding.chipStatus.text = context.getString(R.string.filter_done)
                 binding.chipStatus.backgroundTintList = ColorStateList.valueOf(
-                    ContextCompat.getColor(context, R.color.status_done_bg)
+                    ContextCompat.getColor(context, R.color.status_done_bg),
                 )
                 binding.chipStatus.setTextColor(
-                    ContextCompat.getColor(context, R.color.status_done)
+                    ContextCompat.getColor(context, R.color.status_done),
                 )
             }
         }
 
         // Progress text & indicator
         val totalCount = items.size
-        val doneCount = items.count { it.isDone }
+        val doneCount = items.count(TodoItemEntity::isDone)
         binding.textProgress.text = if (totalCount == 0) {
             "0 items"
         } else {
@@ -100,24 +100,15 @@ class TodoListAdapter(
             onListClick(list.id)
         }
 
-        binding.layoutDeadline.setOnClickListener {
-            onDeadlineClick(list)
-        }
-
         binding.btnMenu.setOnClickListener { view ->
             val popup = PopupMenu(context, view)
             popup.menu.add(R.string.action_edit)
-            popup.menu.add(R.string.action_change_deadline)
             popup.menu.add(R.string.action_notification_settings)
             popup.menu.add(R.string.action_delete)
             popup.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.title) {
                     context.getString(R.string.action_edit) -> {
                         onEditClick(list)
-                        true
-                    }
-                    context.getString(R.string.action_change_deadline) -> {
-                        onDeadlineClick(list)
                         true
                     }
                     context.getString(R.string.action_notification_settings) -> {

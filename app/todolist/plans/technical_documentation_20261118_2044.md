@@ -3,7 +3,8 @@
 ## Architecture
 - **UI Layer**: ViewBinding-based `AppCompatActivity` screens (`MainActivity`, `ListDetailActivity`, `SettingsActivity`) with RecyclerView `ListAdapter`s (`TodoListAdapter`, `CheckableItemAdapter`) and Material 3 themes.
 - **List Card & Interactions**: `item_todo_list_card.xml` renders a read-only due date row (`layoutDeadline`), a `6dp` `LinearProgressIndicator` (`trackCornerRadius="3dp"`, `layout_marginTop="12dp"`), and an overflow menu (`Edit`, `Notification Settings`, `Delete`). Deadline editing lives in `MainActivity.showAddEditListDialog` and `ListDetailActivity`.
-- **Data & Persistence**: Room database (`AppDatabase`, schema v2) storing `TodoListEntity` and `TodoItemEntity` (cascade-deleted foreign key) via `TodoListDao` and `TodoListRepository`. User preferences are stored via `PreferencesManager` (`SharedPreferences`).
+- **Localization & Settings**: `SettingsActivity` delegates language changes to `PreferencesManager.saveLanguageTag` (`AppCompatDelegate.setApplicationLocales`) without premature manual `recreate()`. `PreferencesManager.applySavedPreferencesOnAppLaunch` restores `SharedPreferences` language only when `AppCompatDelegate.getApplicationLocales().isEmpty`.
+- **Data & Persistence**: Room database (`AppDatabase`, schema v2) storing `TodoListEntity` and `TodoItemEntity` (cascade-deleted foreign key) via `TodoListDao` and `TodoListRepository`.
 - **Background Reminders**: `WorkManagerDeadlineScheduler` schedules unique `CoroutineWorker` jobs (`DeadlineNotificationWorker`) via `WorkManager`, triggered by `TodoListRepository` mutations and initial startup sync, posting high-priority notifications via `NotificationHelper` (`todo_deadline_reminders` channel).
 
 ## Build & Test

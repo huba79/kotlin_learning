@@ -93,7 +93,7 @@ object PreferencesManager {
         AppCompatDelegate.setDefaultNightMode(mode)
 
         val lang = getPrefs(context).getString(KEY_LANGUAGE, null)
-        if (lang != null) {
+        if ((lang != null) && AppCompatDelegate.getApplicationLocales().isEmpty) {
             val appLocales = LocaleListCompat.forLanguageTags(lang)
             AppCompatDelegate.setApplicationLocales(appLocales)
         }

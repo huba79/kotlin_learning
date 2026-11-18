@@ -90,7 +90,6 @@ class SettingsActivity : AppCompatActivity() {
             }
             if (langTag != PreferencesManager.getLanguageTag(this)) {
                 PreferencesManager.saveLanguageTag(this, langTag)
-                recreate()
             }
         }
     }

@@ -56,4 +56,10 @@
     <string name="lang_ro">Română</string>
 
     <string name="due_date_format">Scadență: %s</string>
+
+    <!-- Notification Strings -->
+    <string name="notification_channel_name">Memento-uri termen limită</string>
+    <string name="notification_channel_description">Notificări pentru termenele limită ale listelor</string>
+    <string name="notification_deadline_title">Termen limită apropiat: %s</string>
+    <string name="notification_deadline_body">Scadență: %s</string>
 </resources>

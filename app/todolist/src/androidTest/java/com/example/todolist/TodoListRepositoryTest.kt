@@ -8,6 +8,7 @@ import com.example.todolist.data.ListStatus
 import com.example.todolist.data.TodoListEntity
 import com.example.todolist.data.TodoItemEntity
 import com.example.todolist.data.TodoListRepository
+import com.example.todolist.notifications.DeadlineReminderScheduler
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -19,14 +20,29 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class TodoListRepositoryTest {
 
+    private class FakeReminderScheduler : DeadlineReminderScheduler {
+        val scheduledLists = mutableListOf<TodoListEntity>()
+        val cancelledIds = mutableListOf<Long>()
+
+        override fun schedule(list: TodoListEntity) {
+            scheduledLists.add(list)
+        }
+
+        override fun cancel(listId: Long) {
+            cancelledIds.add(listId)
+        }
+    }
+
     private lateinit var db: AppDatabase
     private lateinit var repository: TodoListRepository
+    private lateinit var fakeScheduler: FakeReminderScheduler
 
     @Before
     fun createDb() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
-        repository = TodoListRepository(db.todoListDao())
+        fakeScheduler = FakeReminderScheduler()
+        repository = TodoListRepository(db.todoListDao(), fakeScheduler)
     }
 
     @After
@@ -37,8 +53,8 @@ class TodoListRepositoryTest {
     @Test
     fun switchingStatusToDoneChecksAllItems() = runBlocking {
         val listId = repository.insertList("Shopping List", ListStatus.TODO)
-        val itemId1 = repository.insertItem(listId, "Apples")
-        val itemId2 = repository.insertItem(listId, "Milk")
+        repository.insertItem(listId, "Apples")
+        repository.insertItem(listId, "Milk")
 
         val listEntity = TodoListEntity(id = listId, title = "Shopping List", status = ListStatus.TODO)
         repository.updateListStatus(listEntity, ListStatus.DONE)
@@ -47,6 +63,7 @@ class TodoListRepositoryTest {
         assertNotNull(result)
         assertEquals(ListStatus.DONE, result!!.list.status)
         assertTrue(result.items.all { it.isDone })
+        assertTrue(fakeScheduler.cancelledIds.contains(listId))
     }
 
     @Test
@@ -62,5 +79,20 @@ class TodoListRepositoryTest {
         assertNotNull(result)
         assertEquals(ListStatus.TODO, result!!.list.status)
         assertTrue(result.items.none { it.isDone })
+        assertTrue(fakeScheduler.scheduledLists.any { it.id == listId && it.status == ListStatus.TODO })
+    }
+
+    @Test
+    fun deletingOrUpdatingDeadlineUpdatesReminderScheduler() = runBlocking {
+        val listId = repository.insertList("Errands", ListStatus.TODO)
+        assertEquals(1, fakeScheduler.scheduledLists.size)
+
+        val inserted = repository.getListById(listId).first()!!.list
+        val newDeadline = inserted.deadline + 3_600_000L
+        repository.updateListDeadline(inserted, newDeadline)
+        assertTrue(fakeScheduler.scheduledLists.any { it.id == listId && it.deadline == newDeadline })
+
+        repository.deleteList(inserted.copy(deadline = newDeadline))
+        assertTrue(fakeScheduler.cancelledIds.contains(listId))
     }
 }

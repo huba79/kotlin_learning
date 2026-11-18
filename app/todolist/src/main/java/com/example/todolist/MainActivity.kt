@@ -1,6 +1,8 @@
 package com.example.todolist
 
+import android.Manifest
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -19,6 +22,8 @@ import com.example.todolist.data.TodoListEntity
 import com.example.todolist.data.TodoListRepository
 import com.example.todolist.databinding.ActivityMainBinding
 import com.example.todolist.databinding.DialogAddEditListBinding
+import com.example.todolist.notifications.NotificationHelper
+import com.example.todolist.notifications.WorkManagerDeadlineScheduler
 import com.example.todolist.ui.ListDetailActivity
 import com.example.todolist.ui.SettingsActivity
 import com.example.todolist.ui.TodoListAdapter
@@ -32,13 +37,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var repository: TodoListRepository
     private lateinit var adapter: TodoListAdapter
+    private lateinit var deadlineScheduler: WorkManagerDeadlineScheduler
 
     private var currentSearchQuery: String = ""
     private var currentFilterStatus: ListStatus? = null
     private var appliedColorThemeKey: String = ""
 
     private var isDataLoaded: Boolean = false
+    private var hasSyncedInitialReminders: Boolean = false
     private val appStartTime: Long = System.currentTimeMillis()
+
+    private val notificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission(),
+    ) { _ -> }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -58,13 +69,25 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.topAppBar)
 
+        NotificationHelper.ensureNotificationChannel(this)
+        requestNotificationPermissionIfNeeded()
+
         val dao = AppDatabase.getDatabase(this).todoListDao()
-        repository = TodoListRepository(dao)
+        deadlineScheduler = WorkManagerDeadlineScheduler(this)
+        repository = TodoListRepository(dao, deadlineScheduler)
 
         setupRecyclerView()
         setupSearchAndFilter()
         setupFab()
         loadData()
+    }
+
+    private fun requestNotificationPermissionIfNeeded() {
+        if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) &&
+            !NotificationHelper.hasNotificationPermission(this)
+        ) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
     }
 
     override fun onResume() {
@@ -184,6 +207,10 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     binding.textEmptyState.visibility = View.GONE
                     binding.recyclerViewLists.visibility = View.VISIBLE
+                }
+                if (!hasSyncedInitialReminders && currentSearchQuery.isEmpty() && currentFilterStatus == null) {
+                    hasSyncedInitialReminders = true
+                    lists.forEach { (list, _) -> deadlineScheduler.syncIfNeeded(list) }
                 }
                 isDataLoaded = true
             }

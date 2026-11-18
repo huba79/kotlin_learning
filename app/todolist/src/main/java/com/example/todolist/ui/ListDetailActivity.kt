@@ -12,6 +12,7 @@ import com.example.todolist.data.TodoItemEntity
 import com.example.todolist.data.TodoListEntity
 import com.example.todolist.data.TodoListRepository
 import com.example.todolist.databinding.ActivityListDetailBinding
+import com.example.todolist.notifications.WorkManagerDeadlineScheduler
 import com.example.todolist.utils.PreferencesManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.collectLatest
@@ -45,7 +46,7 @@ class ListDetailActivity : AppCompatActivity() {
         }
 
         val dao = AppDatabase.getDatabase(this).todoListDao()
-        repository = TodoListRepository(dao)
+        repository = TodoListRepository(dao, WorkManagerDeadlineScheduler(this))
 
         setupToolbar()
         setupRecyclerView()

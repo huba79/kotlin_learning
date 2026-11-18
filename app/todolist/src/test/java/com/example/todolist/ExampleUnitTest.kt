@@ -1,6 +1,7 @@
 package com.example.todolist
 
 import com.example.todolist.data.ListStatus
+import com.example.todolist.notifications.WorkManagerDeadlineScheduler
 import com.example.todolist.utils.PreferencesManager
 import org.junit.Assert.*
 import org.junit.Test
@@ -38,5 +39,52 @@ class ExampleUnitTest {
         // Both conditions satisfied (>= 1s and data loaded) -> dismiss splash screen
         assertFalse(shouldKeepSplashScreen(elapsedTimeMs = 1000L, isDataLoaded = true))
         assertFalse(shouldKeepSplashScreen(elapsedTimeMs = 1200L, isDataLoaded = true))
+    }
+
+    @Test
+    fun testComputeReminderDelay_futureTriggerReturnsRemainingDelay() {
+        val now = 1_000_000L
+        val deadline = now + 120 * 60_000L // +120 minutes
+        val delay = WorkManagerDeadlineScheduler.computeReminderDelayMillis(
+            deadlineMillis = deadline,
+            offsetMinutes = 30,
+            nowMillis = now,
+            status = ListStatus.TODO
+        )
+        assertEquals(90 * 60_000L, delay)
+    }
+
+    @Test
+    fun testComputeReminderDelay_pastThresholdFutureDeadlineClampsToZero() {
+        val now = 1_000_000L
+        val deadline = now + 20 * 60_000L // +20 minutes
+        val delay = WorkManagerDeadlineScheduler.computeReminderDelayMillis(
+            deadlineMillis = deadline,
+            offsetMinutes = 60, // threshold was 40 minutes ago
+            nowMillis = now,
+            status = ListStatus.IN_PROGRESS
+        )
+        assertEquals(0L, delay)
+    }
+
+    @Test
+    fun testComputeReminderDelay_doneOrExpiredReturnsNull() {
+        val now = 1_000_000L
+        assertNull(
+            WorkManagerDeadlineScheduler.computeReminderDelayMillis(
+                deadlineMillis = now + 60 * 60_000L,
+                offsetMinutes = 15,
+                nowMillis = now,
+                status = ListStatus.DONE
+            )
+        )
+        assertNull(
+            WorkManagerDeadlineScheduler.computeReminderDelayMillis(
+                deadlineMillis = now - 1_000L,
+                offsetMinutes = 15,
+                nowMillis = now,
+                status = ListStatus.TODO
+            )
+        )
     }
 }

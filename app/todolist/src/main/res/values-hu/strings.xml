@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Teendő Listáim</string>
+    <string name="app_name">Teendőim</string>
     <string name="add_item">Hozzáadás</string>
     <string name="confirm_delete_title">Biztos törölnéd?</string>
     <string name="confirm_delete_question">Biztosan törölni szeretnéd ezt a listát?</string>
@@ -56,4 +56,10 @@
     <string name="lang_ro">Română (Román)</string>
 
     <string name="due_date_format">Határidő: %s</string>
+
+    <!-- Notification Strings -->
+    <string name="notification_channel_name">Határidő emlékeztetők</string>
+    <string name="notification_channel_description">Értesítések a közelgő teendőlista-határidőkről</string>
+    <string name="notification_deadline_title">Közelgő határidő: %s</string>
+    <string name="notification_deadline_body">Határidő: %s</string>
 </resources>

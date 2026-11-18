@@ -56,4 +56,10 @@
     <string name="lang_ro">Română (Romanian)</string>
 
     <string name="due_date_format">Due: %s</string>
+
+    <!-- Notification Strings -->
+    <string name="notification_channel_name">Deadline Reminders</string>
+    <string name="notification_channel_description">Notifications for upcoming todo list deadlines</string>
+    <string name="notification_deadline_title">Upcoming deadline: %s</string>
+    <string name="notification_deadline_body">Due %s</string>
 </resources>

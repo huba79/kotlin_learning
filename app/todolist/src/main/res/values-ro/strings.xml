@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Listele mele Todo</string>
+    <string name="title_main">Listele mele</string>
     <string name="add_item">Adaugă</string>
     <string name="confirm_delete_title">Confirmă Ștergerea</string>
     <string name="confirm_delete_question">Sigur dorești să ștergi această listă?</string>
@@ -29,8 +30,8 @@
     <string name="cancel">Anulează</string>
 
     <!-- Settings Strings -->
-    <string name="action_settings">Setări</string>
-    <string name="title_settings">Setări</string>
+    <string name="action_settings">Setări interfață</string>
+    <string name="title_settings">Setări interfață</string>
     <string name="action_notification_settings">Setări notificări</string>
     <string name="title_notification_settings">Configurare timp notificare</string>
     <string name="offset_15m">Cu 15 minute înainte</string>

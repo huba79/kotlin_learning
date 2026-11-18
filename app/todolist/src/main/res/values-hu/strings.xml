@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Teendőim</string>
+    <string name="title_main">Listáim</string>
     <string name="add_item">Hozzáadás</string>
     <string name="confirm_delete_title">Biztos törölnéd?</string>
     <string name="confirm_delete_question">Biztosan törölni szeretnéd ezt a listát?</string>
@@ -29,8 +30,8 @@
     <string name="cancel">Mégse</string>
 
     <!-- Settings Strings -->
-    <string name="action_settings">Beállítások</string>
-    <string name="title_settings">Beállítások</string>
+    <string name="action_settings">Felületi beállítások</string>
+    <string name="title_settings">Felületi beállítások</string>
     <string name="action_notification_settings">Értesítési beállítások</string>
     <string name="title_notification_settings">Értesítési időpont beállítása</string>
     <string name="offset_15m">15 perccel előtte</string>

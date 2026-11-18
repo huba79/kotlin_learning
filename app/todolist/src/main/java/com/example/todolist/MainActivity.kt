@@ -29,6 +29,7 @@ import com.example.todolist.ui.SettingsActivity
 import com.example.todolist.ui.TodoListAdapter
 import com.example.todolist.utils.PreferencesManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     private var isDataLoaded: Boolean = false
     private var hasSyncedInitialReminders: Boolean = false
+    private var loadDataJob: Job? = null
     private val appStartTime: Long = System.currentTimeMillis()
 
     private val notificationPermissionLauncher = registerForActivityResult(
@@ -137,7 +139,7 @@ class MainActivity : AppCompatActivity() {
             },
             onDeleteClick = { list ->
                 showDeleteConfirmationDialog(list)
-            }
+            },
         )
 
         binding.recyclerViewLists.layoutManager = LinearLayoutManager(this)
@@ -153,41 +155,53 @@ class MainActivity : AppCompatActivity() {
                 android.app.TimePickerDialog(
                     this,
                     { _, hourOfDay, minute ->
-                        calendar.set(year, month, dayOfMonth, hourOfDay, minute)
+                        calendar[java.util.Calendar.YEAR] = year
+                        calendar[java.util.Calendar.MONTH] = month
+                        calendar[java.util.Calendar.DAY_OF_MONTH] = dayOfMonth
+                        calendar[java.util.Calendar.HOUR_OF_DAY] = hourOfDay
+                        calendar[java.util.Calendar.MINUTE] = minute
                         val newDeadline = calendar.timeInMillis
                         lifecycleScope.launch {
                             repository.updateListDeadline(list, newDeadline)
                         }
                     },
-                    calendar.get(java.util.Calendar.HOUR_OF_DAY),
-                    calendar.get(java.util.Calendar.MINUTE),
-                    true
+                    calendar[java.util.Calendar.HOUR_OF_DAY],
+                    calendar[java.util.Calendar.MINUTE],
+                    true,
                 ).show()
             },
-            calendar.get(java.util.Calendar.YEAR),
-            calendar.get(java.util.Calendar.MONTH),
-            calendar.get(java.util.Calendar.DAY_OF_MONTH)
+            calendar[java.util.Calendar.YEAR],
+            calendar[java.util.Calendar.MONTH],
+            calendar[java.util.Calendar.DAY_OF_MONTH],
         ).show()
     }
 
     private fun setupSearchAndFilter() {
-        binding.editSearchQuery.addTextChangedListener(object : TextWatcher {
+        binding.editSearchQuery.addTextChangedListener(
+            object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                currentSearchQuery = s?.toString()?.trim() ?: ""
-                loadData()
+                val newQuery = s?.toString()?.trim() ?: ""
+                if (newQuery != currentSearchQuery) {
+                    currentSearchQuery = newQuery
+                    loadData()
+                }
             }
             override fun afterTextChanged(s: Editable?) {}
-        })
+        },
+        )
 
         binding.chipGroupFilter.setOnCheckedStateChangeListener { _, checkedIds ->
-            currentFilterStatus = when {
+            val newStatus = when {
                 checkedIds.contains(R.id.chipFilterTodo) -> ListStatus.TODO
                 checkedIds.contains(R.id.chipFilterInProgress) -> ListStatus.IN_PROGRESS
                 checkedIds.contains(R.id.chipFilterDone) -> ListStatus.DONE
                 else -> null
             }
-            loadData()
+            if (newStatus != currentFilterStatus) {
+                currentFilterStatus = newStatus
+                loadData()
+            }
         }
     }
 
@@ -198,7 +212,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadData() {
-        lifecycleScope.launch {
+        loadDataJob?.cancel()
+        loadDataJob = lifecycleScope.launch {
             repository.getLists(currentSearchQuery, currentFilterStatus).collectLatest { lists ->
                 adapter.submitList(lists)
                 if (lists.isEmpty()) {
@@ -208,7 +223,7 @@ class MainActivity : AppCompatActivity() {
                     binding.textEmptyState.visibility = View.GONE
                     binding.recyclerViewLists.visibility = View.VISIBLE
                 }
-                if (!hasSyncedInitialReminders && currentSearchQuery.isEmpty() && currentFilterStatus == null) {
+                if ((!hasSyncedInitialReminders) && currentSearchQuery.isEmpty() && (currentFilterStatus == null)) {
                     hasSyncedInitialReminders = true
                     lists.forEach { (list, _) -> deadlineScheduler.syncIfNeeded(list) }
                 }
@@ -219,7 +234,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showAddEditListDialog(listToEdit: TodoListEntity?) {
         val dialogBinding = DialogAddEditListBinding.inflate(LayoutInflater.from(this))
-        var selectedDeadline: Long = listToEdit?.deadline ?: (System.currentTimeMillis() + 24 * 60 * 60 * 1000L)
+        var selectedDeadline: Long = listToEdit?.deadline ?: (System.currentTimeMillis() + (24 * 60 * 60 * 1000L))
         val globalOffset = PreferencesManager.getNotificationOffsetMinutes(this)
         val selectedOffset: Int = listToEdit?.notificationOffsetMinutes ?: globalOffset
 
@@ -239,18 +254,22 @@ class MainActivity : AppCompatActivity() {
                     android.app.TimePickerDialog(
                         this,
                         { _, hourOfDay, minute ->
-                            calendar.set(year, month, dayOfMonth, hourOfDay, minute)
+                            calendar[java.util.Calendar.YEAR] = year
+                            calendar[java.util.Calendar.MONTH] = month
+                            calendar[java.util.Calendar.DAY_OF_MONTH] = dayOfMonth
+                            calendar[java.util.Calendar.HOUR_OF_DAY] = hourOfDay
+                            calendar[java.util.Calendar.MINUTE] = minute
                             selectedDeadline = calendar.timeInMillis
                             updateDeadlineButtonText()
                         },
-                        calendar.get(java.util.Calendar.HOUR_OF_DAY),
-                        calendar.get(java.util.Calendar.MINUTE),
-                        true
+                        calendar[java.util.Calendar.HOUR_OF_DAY],
+                        calendar[java.util.Calendar.MINUTE],
+                        true,
                     ).show()
                 },
-                calendar.get(java.util.Calendar.YEAR),
-                calendar.get(java.util.Calendar.MONTH),
-                calendar.get(java.util.Calendar.DAY_OF_MONTH)
+                calendar[java.util.Calendar.YEAR],
+                calendar[java.util.Calendar.MONTH],
+                calendar[java.util.Calendar.DAY_OF_MONTH],
             ).show()
         }
 
